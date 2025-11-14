@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import NavbarHeader from './components/NavbarHeader.vue'
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-  </nav>
+  <NavbarHeader />
 
   <router-view v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
