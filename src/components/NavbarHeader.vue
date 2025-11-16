@@ -11,35 +11,35 @@ import { RouterLink } from 'vue-router'
       <RouterLink
         to="/"
         exact-active-class="active"
-        class="nav-link transition-colors text-(--cream) hover:text-(--red)"
+        class="nav-link cursor-pointer transition-colors text-(--cream) hover:text-(--red)"
       >
         Home
       </RouterLink>
       <RouterLink
         to="/about"
         active-class="active"
-        class="nav-link transition-colors text-(--cream) hover:text-(--red)"
+        class="nav-link cursor-pointer transition-colors text-(--cream) hover:text-(--red)"
       >
         About
       </RouterLink>
       <RouterLink
         to="/music"
         active-class="active"
-        class="nav-link transition-colors text-(--cream) hover:text-(--red)"
+        class="nav-link cursor-pointer transition-colors text-(--cream) hover:text-(--red)"
       >
         Music
       </RouterLink>
       <RouterLink
         to="/tour"
         active-class="active"
-        class="nav-link transition-colors text-(--cream) hover:text-(--red)"
+        class="nav-link cursor-pointer transition-colors text-(--cream) hover:text-(--red)"
       >
         Tour
       </RouterLink>
       <RouterLink
         to="/press"
         active-class="active"
-        class="nav-link transition-colors text-(--cream) hover:text-(--red)"
+        class="nav-link cursor-pointer transition-colors text-(--cream) hover:text-(--red)"
       >
         Press
       </RouterLink>
