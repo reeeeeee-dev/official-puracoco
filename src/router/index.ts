@@ -8,6 +8,22 @@ const router = createRouter({
       path: '/',
       component: HomeView,
     },
+    {
+      path: '/about',
+      component: () => import('@/views/AboutView.vue'),
+    },
+    {
+      path: '/music',
+      component: () => import('@/views/MusicView.vue'),
+    },
+    {
+      path: '/tour',
+      component: () => import('@/views/TourView.vue'),
+    },
+    {
+      path: '/press',
+      component: () => import('@/views/PressView.vue'),
+    },
   ],
 })
 
