@@ -3,7 +3,9 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <nav class="flex justify-between items-center gap-4 h-16 bg-black text-white px-16">
+  <nav
+    class="absolute top-0 left-0 w-full flex justify-between items-center gap-4 h-16 bg-black text-white px-16"
+  >
     <RouterLink to="/">
       <img src="/star_logo.png" alt="Pura Coco" class="w-10 h-10" />
     </RouterLink>

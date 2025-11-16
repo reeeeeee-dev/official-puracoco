@@ -2,6 +2,6 @@
 
 <template>
   <div>
-    <h1>Home</h1>
+    <img src="@/assets/intro.gif" alt="Intro" class="w-screen h-screen object-cover" />
   </div>
 </template>
