@@ -4,7 +4,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "job",
+  "name": "official-puracoco",
   "compatibility_date": "2025-11-14",
   "main": "server/index.js",
   "assets": {
