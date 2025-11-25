@@ -9,7 +9,7 @@ import IntroSection from '@/components/IntroSection.vue'
       <video
         autoplay
         muted
-        src="@/assets/intro.mp4"
+        src="https://website-host.reetikpatel.me/intro.mp4"
         alt="Intro"
         class="w-screen h-screen object-cover"
       />
