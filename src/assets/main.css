@@ -7,3 +7,9 @@
   --red: #f24333;
   --green: #73877b;
 }
+
+html,
+body {
+  overscroll-behavior: none;
+  background-color: var(--black);
+}
