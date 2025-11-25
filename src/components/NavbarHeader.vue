@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
+import logoSvg from '@/assets/star_logo.svg?raw'
 
 const isScrolled = ref(false)
 
@@ -20,11 +21,17 @@ onUnmounted(() => {
 
 <template>
   <nav
-    class="absolute top-0 left-0 w-full flex justify-between items-center gap-4 h-16 text-white px-16 transition-all duration-300 z-50"
+    class="fixed top-0 left-0 w-full flex justify-between items-center gap-4 h-16 px-16 transition-all duration-300 z-50"
     :class="{ 'bg-black': isScrolled, 'bg-transparent': !isScrolled }"
   >
-    <RouterLink to="/">
-      <img src="/star_logo.png" alt="Pura Coco" class="w-10 h-10" />
+    <RouterLink
+      to="/"
+      class="inline-flex items-center text-(--cream) hover:text-(--red) transition-colors"
+    >
+      <span
+        class="inline-block w-16 h-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
+        v-html="logoSvg"
+      ></span>
     </RouterLink>
     <div class="flex items-center gap-8">
       <RouterLink
