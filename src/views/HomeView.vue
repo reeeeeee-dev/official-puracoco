@@ -6,7 +6,13 @@ import IntroSection from '@/components/IntroSection.vue'
 <template>
   <div>
     <div class="relative">
-      <img src="@/assets/intro.gif" alt="Intro" class="w-screen h-screen object-cover" />
+      <video
+        autoplay
+        muted
+        src="@/assets/intro.mp4"
+        alt="Intro"
+        class="w-screen h-screen object-cover"
+      />
       <ScrollIndicator />
     </div>
 
