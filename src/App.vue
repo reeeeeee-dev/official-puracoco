@@ -6,9 +6,9 @@ import NavbarHeader from './components/NavbarHeader.vue'
 <template>
   <NavbarHeader />
 
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component, route }">
     <Transition name="fade" mode="out-in">
-      <component :is="Component" />
+      <component :is="Component" :class="route.path !== '/' ? 'mt-16' : ''" />
     </Transition>
   </router-view>
 </template>
