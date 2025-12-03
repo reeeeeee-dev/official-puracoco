@@ -13,3 +13,7 @@ body {
   overscroll-behavior: none;
   background-color: var(--black);
 }
+
+html.snap-scroll {
+  @apply snap-y snap-mandatory;
+}
