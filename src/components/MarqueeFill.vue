@@ -36,7 +36,7 @@ onMounted(async () => {
 // Repeat text to fill the marquee width - duplicate for seamless loop
 const repeatedText = computed(() => {
   const repeatCount = 20 // Enough to fill width
-  const textWithSeparator = props.text + ' • '
+  const textWithSeparator = props.text + ' '
   return textWithSeparator.repeat(repeatCount)
 })
 
