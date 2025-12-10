@@ -9,7 +9,8 @@ const props = defineProps<{
 
 const containerRef = ref<HTMLElement | null>(null)
 const marqueeHeight = ref(50) // Default height per marquee
-const marqueeCount = ref(20) // Default fallback count
+// Start with a high initial count to ensure full coverage from the start
+const marqueeCount = ref(Math.ceil(window.innerHeight / 50)) // Calculate based on viewport height
 
 const calculateMarqueeCount = () => {
   if (containerRef.value) {
@@ -45,17 +46,50 @@ const spanCount = 8 // Number of spans for seamless looping
 
 <template>
   <div ref="containerRef" class="w-full h-full overflow-hidden" :class="props.class">
-    <marquee
+    <div
       v-for="index in marqueeCount"
       :key="index"
-      :direction="index % 2 === 0 ? 'left' : 'right'"
-      behavior="scroll"
-      loop="-1"
-      class="w-full block text-(--cream)"
+      class="w-full block text-(--cream) overflow-hidden"
     >
-      <span v-for="i in spanCount" :key="i" :class="props.textClass" class="inline-block">
-        {{ repeatedText }}
-      </span>
-    </marquee>
+      <div
+        :class="[
+          'inline-flex whitespace-nowrap will-change-transform',
+          index % 2 === 0 ? 'marquee-left' : 'marquee-right',
+        ]"
+        :style="{ transform: index % 2 === 0 ? 'translateX(0)' : 'translateX(-50%)' }"
+      >
+        <span v-for="i in spanCount * 2" :key="i" :class="props.textClass" class="inline-block">
+          {{ repeatedText }}
+        </span>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.marquee-left {
+  animation: marquee-left 4800s linear 1s infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 4800s linear 1s infinite;
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(-12.5%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-37.5%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+</style>
