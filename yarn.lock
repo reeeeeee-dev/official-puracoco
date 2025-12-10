@@ -3637,6 +3637,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-vue-next@npm:^0.556.0":
+  version: 0.556.0
+  resolution: "lucide-vue-next@npm:0.556.0"
+  peerDependencies:
+    vue: ">=3.0.1"
+  checksum: 10c0/399f90140d127e15209913c7026c18f8d2b537a7389768a3fae96f6acb3e49ddfcd4729ab7c0e30b0572c7d3b87b1fe67ecce5d4a1d6539cdb3fc91124f4ee35
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:^0.30.21, magic-string@npm:^0.30.4":
   version: 0.30.21
   resolution: "magic-string@npm:0.30.21"
@@ -3973,6 +3982,7 @@ __metadata:
     eslint: "npm:^9.37.0"
     eslint-plugin-vue: "npm:~10.5.0"
     jiti: "npm:^2.6.1"
+    lucide-vue-next: "npm:^0.556.0"
     npm-run-all2: "npm:^8.0.4"
     prettier: "npm:3.6.2"
     tailwindcss: "npm:^4.1.17"
