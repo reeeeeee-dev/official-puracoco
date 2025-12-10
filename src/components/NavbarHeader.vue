@@ -30,7 +30,7 @@ onUnmounted(() => {
 
 <template>
   <nav
-    class="fixed top-0 left-0 w-full flex flex-col md:flex-row justify-between items-center h-auto md:h-16 px-4 md:px-16 transition-all duration-300 z-50"
+    class="fixed top-0 left-0 w-full flex flex-col md:flex-row justify-between items-center h-auto md:h-16 px-4 md:px-16 transition-all duration-300 z-40"
     :class="{
       'bg-black gap-4': isScrolled || isMobileMenuOpen,
       'bg-transparent gap-0 md:gap-4': !isScrolled && !isMobileMenuOpen,
