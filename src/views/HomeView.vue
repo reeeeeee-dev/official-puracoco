@@ -14,7 +14,7 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <div class="relative snap-start snap-stop">
+    <div class="relative snap-start snap-always">
       <video
         autoplay
         muted
@@ -25,7 +25,7 @@ onUnmounted(() => {
       <ScrollIndicator />
     </div>
 
-    <div class="h-16 snap-start snap-stop" />
+    <div class="h-16 snap-start snap-always" />
     <IntroSection />
   </div>
 </template>
