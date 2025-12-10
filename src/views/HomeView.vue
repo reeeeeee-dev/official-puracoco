@@ -9,15 +9,26 @@ let wheelTimeout: number | null = null
 let accumulatedWheelDelta = 0
 const WHEEL_THRESHOLD = 50 // Minimum wheel delta to trigger section change
 
+// Check if device is mobile
+const isMobile = () => {
+  return (
+    window.innerWidth < 768 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  )
+}
+
 // Apply scroll snap class synchronously before mount
 onBeforeMount(() => {
-  document.documentElement.classList.add('snap-scroll')
-  // Prevent scroll restoration
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual'
+  // Only enable snap scrolling on desktop
+  if (!isMobile()) {
+    document.documentElement.classList.add('snap-scroll')
+    // Prevent scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+    // Reset scroll position to ensure snap works from the start
+    window.scrollTo(0, 0)
   }
-  // Reset scroll position to ensure snap works from the start
-  window.scrollTo(0, 0)
 })
 
 const getSnapSections = (): HTMLElement[] => {
@@ -98,6 +109,9 @@ const handleWheel = (e: WheelEvent) => {
 }
 
 const handleScroll = () => {
+  // Disable snap behavior on mobile
+  if (isMobile()) return
+
   if (isScrolling) return
 
   // If user somehow scrolled (e.g., via keyboard), snap to nearest section
@@ -118,6 +132,9 @@ const handleScroll = () => {
 }
 
 onMounted(async () => {
+  // Only enable snap scrolling behavior on desktop
+  if (isMobile()) return
+
   // Wait for DOM to be fully rendered
   await nextTick()
 
@@ -148,18 +165,20 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('wheel', handleWheel)
-  window.removeEventListener('scroll', handleScroll)
+  if (!isMobile()) {
+    window.removeEventListener('wheel', handleWheel)
+    window.removeEventListener('scroll', handleScroll)
+    document.documentElement.classList.remove('snap-scroll')
+    // Restore scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'auto'
+    }
+  }
   if (scrollTimeout) {
     clearTimeout(scrollTimeout)
   }
   if (wheelTimeout) {
     clearTimeout(wheelTimeout)
-  }
-  document.documentElement.classList.remove('snap-scroll')
-  // Restore scroll restoration
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'auto'
   }
 })
 </script>

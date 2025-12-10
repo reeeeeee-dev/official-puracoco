@@ -15,6 +15,12 @@ body {
 }
 
 html.snap-scroll {
-  @apply snap-y snap-mandatory;
   scroll-behavior: smooth;
+}
+
+/* Only enable snap scrolling on desktop/tablet, not mobile */
+@media (min-width: 768px) {
+  html.snap-scroll {
+    @apply snap-y snap-mandatory;
+  }
 }
