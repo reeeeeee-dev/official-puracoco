@@ -16,4 +16,5 @@ body {
 
 html.snap-scroll {
   @apply snap-y snap-mandatory;
+  scroll-behavior: smooth;
 }
