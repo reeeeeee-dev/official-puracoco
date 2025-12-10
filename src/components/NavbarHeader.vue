@@ -39,10 +39,7 @@ onUnmounted(() => {
     <div class="flex justify-between items-center w-full md:w-auto h-16">
       <RouterLink
         to="/"
-        :class="[
-          'inline-flex items-center hover:text-(--red) transition-colors',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="inline-flex items-center text-(--cream) hover:text-(--red) transition-colors"
         @click="closeMobileMenu"
       >
         <span
@@ -52,10 +49,7 @@ onUnmounted(() => {
       </RouterLink>
       <button
         @click="toggleMobileMenu"
-        :class="[
-          'md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 hover:text-(--red) transition-colors',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 text-(--cream) hover:text-(--red) transition-colors"
         aria-label="Toggle menu"
       >
         <span
@@ -82,10 +76,7 @@ onUnmounted(() => {
       <RouterLink
         to="/"
         exact-active-class="active"
-        :class="[
-          'nav-link relative inline-block cursor-pointer transition-colors hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Home
@@ -93,10 +84,7 @@ onUnmounted(() => {
       <RouterLink
         to="/about"
         active-class="active"
-        :class="[
-          'nav-link relative inline-block cursor-pointer transition-colors hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         About
@@ -104,10 +92,7 @@ onUnmounted(() => {
       <RouterLink
         to="/music"
         active-class="active"
-        :class="[
-          'nav-link relative inline-block cursor-pointer transition-colors hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Music
@@ -115,10 +100,7 @@ onUnmounted(() => {
       <RouterLink
         to="/tour"
         active-class="active"
-        :class="[
-          'nav-link relative inline-block cursor-pointer transition-colors hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Tour
@@ -126,10 +108,7 @@ onUnmounted(() => {
       <RouterLink
         to="/press"
         active-class="active"
-        :class="[
-          'nav-link relative inline-block cursor-pointer transition-colors hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0',
-          isScrolled ? 'text-(--cream)' : 'text-(--black)',
-        ]"
+        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Press
