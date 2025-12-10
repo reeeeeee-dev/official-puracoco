@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import NavbarHeader from './components/NavbarHeader.vue'
+import LoadingScreen from './components/LoadingScreen.vue'
 </script>
 
 <template>
+  <LoadingScreen />
   <NavbarHeader />
 
   <router-view v-slot="{ Component, route }">
