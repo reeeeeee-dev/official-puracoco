@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import ScrollIndicator from '@/components/ScrollIndicator.vue'
+// import ScrollIndicator from '@/components/ScrollIndicator.vue'
 import IntroSection from '@/components/IntroSection.vue'
 
 onMounted(() => {
@@ -14,7 +14,7 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <div class="relative snap-start snap-always">
+    <!-- <div class="relative snap-start snap-always">
       <video
         autoplay
         muted
@@ -23,9 +23,9 @@ onUnmounted(() => {
         class="w-screen h-screen object-cover"
       />
       <ScrollIndicator />
-    </div>
+    </div> -->
 
-    <div class="h-16 snap-start snap-always" />
+    <!-- <div class="h-16 snap-start snap-always" /> -->
     <IntroSection />
   </div>
 </template>
