@@ -5,7 +5,7 @@ import MarqueeFill from './MarqueeFill.vue'
 <template>
   <div class="relative h-[calc(300vh-4rem)]">
     <!-- Sticky background across both sections -->
-    <div class="sticky snap-align-none top-0 w-full h-screen z-0 bg-(--cream)">
+    <div class="sticky snap-align-none top-16 w-full h-[calc(100vh-4rem)] z-0 bg-(--cream)">
       <MarqueeFill
         text="Pura Coco"
         class="absolute inset-0 w-full h-full font-[Poppins] font-extrabold"
