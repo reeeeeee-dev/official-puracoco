@@ -60,7 +60,7 @@ export function useSnapScroll() {
 
     isScrolling = true
     const targetSection = snapSections[index]
-    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    targetSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
     // Reset scrolling flag after animation completes
     setTimeout(() => {
