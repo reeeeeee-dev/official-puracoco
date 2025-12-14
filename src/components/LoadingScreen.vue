@@ -1,9 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
 import logoSvg from '@/assets/head_logo.svg?raw'
 import LoadingDots from './LoadingDots.vue'
 
 const isVisible = ref(true)
+
+// Disable scrolling when loading screen is visible
+watch(
+  isVisible,
+  (visible) => {
+    if (visible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  },
+  { immediate: true },
+)
 
 onMounted(() => {
   // Wait for page to fully load (including images and fonts)
@@ -19,6 +32,11 @@ onMounted(() => {
       }, 500)
     })
   }
+})
+
+onUnmounted(() => {
+  // Ensure scrolling is re-enabled if component is unmounted
+  document.body.style.overflow = ''
 })
 </script>
 
