@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ScrollIndicator from '@/components/ScrollIndicator.vue'
 import AboutSection from '@/components/AboutSection.vue'
+import TourSection from '@/components/TourSection.vue'
 import { useSnapScroll } from '@/composables/useSnapScroll'
 
 useSnapScroll()
@@ -20,5 +21,6 @@ useSnapScroll()
     </div>
 
     <AboutSection />
+    <TourSection />
   </div>
 </template>
