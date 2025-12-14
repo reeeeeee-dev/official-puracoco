@@ -129,6 +129,35 @@ export function useSnapScroll() {
     }
   }
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    // Only handle arrow keys
+    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return
+
+    // Prevent default scrolling behavior
+    e.preventDefault()
+
+    if (isScrolling) return
+
+    const currentIndex = getCurrentSectionIndex()
+    const snapSections = getSnapSections()
+
+    if (snapSections.length === 0) return
+
+    let targetIndex = currentIndex
+    if (e.key === 'ArrowDown' && currentIndex < snapSections.length - 1) {
+      // Arrow down - go to next section
+      targetIndex = currentIndex + 1
+    } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+      // Arrow up - go to previous section
+      targetIndex = currentIndex - 1
+    }
+
+    // Only scroll if target index changed
+    if (targetIndex !== currentIndex) {
+      snapToSection(targetIndex)
+    }
+  }
+
   onMounted(async () => {
     // Only enable snap scrolling behavior on desktop
     if (isMobile()) return
@@ -160,12 +189,15 @@ export function useSnapScroll() {
     window.addEventListener('wheel', handleWheel, { passive: false })
     // Add scroll listener to catch any other scroll events and snap
     window.addEventListener('scroll', handleScroll, { passive: true })
+    // Add keyboard listener for arrow keys
+    window.addEventListener('keydown', handleKeyDown)
   })
 
   onUnmounted(() => {
     if (!isMobile()) {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('keydown', handleKeyDown)
       document.documentElement.classList.remove('snap-scroll')
       // Restore scroll restoration
       if ('scrollRestoration' in history) {

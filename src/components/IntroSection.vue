@@ -11,7 +11,7 @@ const navigateTo = (path: string) => {
 </script>
 
 <template>
-  <div class="relative h-[calc(300vh-4rem)] bg-(--cream) z-0 snap-start snap-always">
+  <div class="relative h-[calc(200vh-4rem)] bg-(--cream) z-0 snap-start snap-always">
     <!-- Sticky background across both sections -->
     <div class="sticky snap-align-none top-16 w-full h-[calc(100vh-4rem)] -z-10">
       <MarqueeFill
