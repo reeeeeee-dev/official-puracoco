@@ -26,7 +26,6 @@ const navigateTo = (path: string) => {
       />
     </div>
 
-    <!-- First section -->
     <div class="relative h-screen snap-start snap-always -mt-screen">
       <div class="h-full flex items-center justify-center">
         <div
@@ -53,13 +52,6 @@ const navigateTo = (path: string) => {
             About Me <ArrowRightIcon :size="24" />
           </button>
         </div>
-      </div>
-    </div>
-
-    <!-- Second section -->
-    <div class="relative h-screen snap-start snap-always">
-      <div class="h-full flex items-center justify-center">
-        <div class="bg-(--black) text-(--cream) w-1/3 h-1/3 p-4 rounded-lg">Some text</div>
       </div>
     </div>
   </div>

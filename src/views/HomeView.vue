@@ -19,7 +19,6 @@ useSnapScroll()
       <ScrollIndicator />
     </div>
 
-    <!-- <div class="h-16 snap-start snap-always" /> -->
     <IntroSection />
   </div>
 </template>
