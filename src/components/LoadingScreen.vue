@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import logoSvg from '@/assets/head_logo.svg?raw'
+import LoadingDots from './LoadingDots.vue'
 
 const isVisible = ref(true)
 
@@ -28,21 +29,8 @@ onMounted(() => {
         <div
           class="size-96 animate-pulse [&_svg]:w-full [&_svg]:h-full [&_svg]:block text-(--cream)"
           v-html="logoSvg"
-        ></div>
-        <div class="flex gap-2">
-          <div
-            class="size-2 rounded-full bg-(--cream) animate-bounce"
-            style="animation-delay: 0s"
-          ></div>
-          <div
-            class="size-2 rounded-full bg-(--cream) animate-bounce"
-            style="animation-delay: 0.2s"
-          ></div>
-          <div
-            class="size-2 rounded-full bg-(--cream) animate-bounce"
-            style="animation-delay: 0.4s"
-          ></div>
-        </div>
+        />
+        <LoadingDots />
       </div>
     </div>
   </Transition>
