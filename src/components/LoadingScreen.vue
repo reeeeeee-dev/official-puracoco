@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import logoSvg from '@/assets/star_logo.svg?raw'
+import logoSvg from '@/assets/head_logo.svg?raw'
 
 const isVisible = ref(true)
 
@@ -26,7 +26,7 @@ onMounted(() => {
     <div v-if="isVisible" class="fixed inset-0 z-50 flex items-center justify-center bg-(--black)">
       <div class="flex flex-col items-center gap-6">
         <div
-          class="w-24 h-24 animate-pulse [&_svg]:w-full [&_svg]:h-full [&_svg]:block text-(--cream)"
+          class="size-96 animate-pulse [&_svg]:w-full [&_svg]:h-full [&_svg]:block text-(--cream)"
           v-html="logoSvg"
         ></div>
         <div class="flex gap-2">
