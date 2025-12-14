@@ -43,13 +43,13 @@ onUnmounted(() => {
         @click="closeMobileMenu"
       >
         <span
-          class="inline-block w-16 h-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
+          class="inline-block size-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
           v-html="logoSvg"
         ></span>
       </RouterLink>
       <button
         @click="toggleMobileMenu"
-        class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 text-(--cream) hover:text-(--red) transition-colors"
+        class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 text-(--cream) hover:text-(--red) transition-colors"
         aria-label="Toggle menu"
       >
         <span
