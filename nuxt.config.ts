@@ -60,7 +60,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: 'cloudflare',
   },
 
   // Router scroll behavior is handled via page meta or composables

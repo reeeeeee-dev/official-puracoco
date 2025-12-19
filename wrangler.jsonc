@@ -5,7 +5,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "official-puracoco",
-  "compatibility_date": "2025-11-25",
+  "compatibility_date": "2025-01-25",
   "main": ".output/server/index.mjs",
   "assets": {
     "directory": ".output/public",
