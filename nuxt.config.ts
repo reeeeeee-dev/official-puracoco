@@ -63,5 +63,10 @@ export default defineNuxtConfig({
     preset: 'cloudflare',
   },
 
+  runtimeConfig: {
+    bandsintownAppId: process.env.BANDSINTOWN_APP_ID,
+    public: {},
+  },
+
   // Router scroll behavior is handled via page meta or composables
 })
