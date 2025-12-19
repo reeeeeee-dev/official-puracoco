@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import MarqueeFill from './MarqueeFill.vue'
 import { ArrowRightIcon } from 'lucide-vue-next'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const navigateTo = (path: string) => {
-  router.push(path)
-}
+import portraitImage from '~/assets/portrait1.png'
 </script>
 
 <template>
@@ -20,7 +14,7 @@ const navigateTo = (path: string) => {
         textClass="text-(--red) text-9xl h-24 uppercase"
       />
       <img
-        src="@/assets/portrait1.png"
+        :src="portraitImage"
         alt="Pura Coco"
         class="absolute w-full h-full object-cover object-top"
       />
@@ -45,12 +39,12 @@ const navigateTo = (path: string) => {
             note tells a story of identity, passion, and authenticity.
           </p>
           <br />
-          <button
+          <NuxtLink
+            to="/about"
             class="m-auto bg-(--red) text-(--cream) p-4 rounded-lg flex items-center gap-2 hover:bg-(--green) transition-colors cursor-pointer"
-            @click="navigateTo('/about')"
           >
             About Me <ArrowRightIcon :size="24" />
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>

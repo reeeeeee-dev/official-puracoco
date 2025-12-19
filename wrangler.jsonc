@@ -6,8 +6,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "official-puracoco",
   "compatibility_date": "2025-11-25",
-  "main": "server/index.ts",
+  "main": ".output/server/index.mjs",
   "assets": {
+    "directory": ".output/public",
     "not_found_handling": "single-page-application",
   },
   "observability": {

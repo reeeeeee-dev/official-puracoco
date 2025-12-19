@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
-import logoSvg from '@/assets/star_logo.svg?raw'
+import logoSvg from '~/assets/star_logo.svg?raw'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -37,7 +36,7 @@ onUnmounted(() => {
     }"
   >
     <div class="flex justify-between items-center w-full md:w-auto h-16">
-      <RouterLink
+      <NuxtLink
         to="/"
         class="inline-flex items-center text-(--cream) hover:text-(--red) transition-colors"
         @click="closeMobileMenu"
@@ -46,7 +45,7 @@ onUnmounted(() => {
           class="inline-block size-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
           v-html="logoSvg"
         ></span>
-      </RouterLink>
+      </NuxtLink>
       <button
         @click="toggleMobileMenu"
         class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 text-(--cream) hover:text-(--red) transition-colors"
@@ -73,46 +72,46 @@ onUnmounted(() => {
         'max-h-0 opacity-0 md:max-h-none md:opacity-100 pb-0 md:pb-0': !isMobileMenuOpen,
       }"
     >
-      <RouterLink
+      <NuxtLink
         to="/"
         exact-active-class="active"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Home
-      </RouterLink>
-      <RouterLink
+      </NuxtLink>
+      <NuxtLink
         to="/about"
         active-class="active"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         About
-      </RouterLink>
-      <RouterLink
+      </NuxtLink>
+      <NuxtLink
         to="/music"
         active-class="active"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Music
-      </RouterLink>
-      <RouterLink
+      </NuxtLink>
+      <NuxtLink
         to="/tour"
         active-class="active"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Tour
-      </RouterLink>
-      <RouterLink
+      </NuxtLink>
+      <NuxtLink
         to="/press"
         active-class="active"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
         Press
-      </RouterLink>
+      </NuxtLink>
     </div>
   </nav>
 </template>
@@ -137,7 +136,8 @@ onUnmounted(() => {
 
 .nav-link.active::after,
 .nav-link.router-link-active::after,
-.nav-link.router-link-exact-active::after {
+.nav-link.router-link-exact-active::after,
+.nav-link[aria-current="page"]::after {
   transform: scaleX(1);
 }
 </style>

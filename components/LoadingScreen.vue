@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, onUnmounted } from 'vue'
-import logoSvg from '@/assets/head_logo.svg?raw'
+import logoSvg from '~/assets/head_logo.svg?raw'
 import LoadingDots from './LoadingDots.vue'
 
 const isVisible = ref(true)
@@ -9,16 +9,21 @@ const isVisible = ref(true)
 watch(
   isVisible,
   (visible) => {
-    if (visible) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+    if (process.client) {
+      if (visible) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
     }
   },
   { immediate: true },
 )
 
 onMounted(() => {
+  // Only run on client side
+  if (!process.client) return
+
   // Wait for page to fully load (including images and fonts)
   if (document.readyState === 'complete') {
     // If already loaded, wait a minimum time for smooth UX
@@ -36,7 +41,9 @@ onMounted(() => {
 
 onUnmounted(() => {
   // Ensure scrolling is re-enabled if component is unmounted
-  document.body.style.overflow = ''
+  if (process.client) {
+    document.body.style.overflow = ''
+  }
 })
 </script>
 
