@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'IndexPage',
+})
+
 import ScrollIndicator from '~/components/ScrollIndicator.vue'
 import AboutSection from '~/components/AboutSection.vue'
 import TourSection from '~/components/TourSection.vue'
@@ -24,4 +28,3 @@ useSnapScroll()
     <TourSection />
   </div>
 </template>
-

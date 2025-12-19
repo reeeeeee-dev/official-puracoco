@@ -1,3 +1,9 @@
+<script setup lang="ts">
+defineOptions({
+  name: 'PressPage',
+})
+</script>
+
 <template>
   <main class="p-8 text-(--cream)">
     <h1 class="text-3xl mb-2">Press</h1>
