@@ -17,7 +17,7 @@
   "secrets_store_secrets": [
     {
       "binding": "BANDSINTOWN_APP_ID",
-      "store_id": "PURACOCO_SECRETS",
+      "store_id": "286d299361db4d48a8e83f932c0a9b8e",
       "secret_name": "BANDSINTOWN_APP_ID",
     },
   ],
