@@ -12,7 +12,7 @@ export default defineEventHandler(async ({ context }) => {
 
   try {
     const response = await $fetch(
-      `https://rest.bandsintown.com/artists/Pura Coco/events/?app_id=${appId}`,
+      `https://rest.bandsintown.com/artists/Pura Coco/events/?app_id=${appId}&date=past`,
     )
     return response
   } catch (error) {
