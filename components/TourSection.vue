@@ -15,6 +15,7 @@ const { data, error, status } = await useFetch('/api/events', {
         <h3 class="text-3xl">Past Shows</h3>
         <div v-if="error" class="text-base max-w-prose">
           There was an error fetching the events. Please refresh the page or try again later.
+          {{ JSON.stringify(error) }}
         </div>
         <div v-else-if="status === 'pending'">Loading ...</div>
         <div v-else-if="status === 'success'">

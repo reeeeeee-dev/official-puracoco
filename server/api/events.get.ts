@@ -19,6 +19,7 @@ export default defineEventHandler(async () => {
     throw createError({
       statusCode: 500,
       statusMessage: 'Failed to fetch events from Bandsintown',
+      data: error,
     })
   }
 })
