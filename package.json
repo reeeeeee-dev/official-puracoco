@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev": "nuxt dev",
+    "dev:cloudflare": "nuxt build && wrangler dev --port 3000",
     "build": "nuxt build",
-    "preview": "nuxt preview",
+    "preview": "nuxt build && wrangler dev --port 3000",
     "deploy": "nuxt build && wrangler deploy",
     "type-check": "nuxt typecheck",
     "lint": "eslint . --fix --cache",
