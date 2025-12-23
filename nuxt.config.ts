@@ -69,6 +69,4 @@ export default defineNuxtConfig({
     // Public keys (exposed to client-side)
     public: {},
   },
-
-  // Router scroll behavior is handled via page meta or composables
 })
