@@ -9,7 +9,9 @@ export default defineEventHandler(async (event) => {
       statusCode: 500,
       statusMessage: 'Bandsintown API key not configured',
       data: {
-        appId: event.context,
+        cf: event.context?.cloudflare,
+        env: event.context?.env,
+        runtimeConfig: useRuntimeConfig(),
       },
     })
   }
