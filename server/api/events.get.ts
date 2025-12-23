@@ -1,22 +1,18 @@
 export default defineEventHandler(async (event) => {
+  const filter = getQuery(event).filter ?? ('all' as 'upcoming' | 'past' | 'all' | undefined)
+
   const appId = process.env.BANDSINTOWN_APP_ID
 
   if (!appId) {
     throw createError({
       statusCode: 500,
       statusMessage: 'Bandsintown API key not configured',
-      data: {
-        cf: event.context?.cloudflare,
-        env: event.context?.env,
-        runtimeConfig: useRuntimeConfig(event),
-        process: !!process.env.BANDSINTOWN_APP_ID ? 'present' : 'missing',
-      },
     })
   }
 
   try {
     const response = await $fetch(
-      `https://rest.bandsintown.com/artists/Pura Coco/events/?app_id=${appId}&date=past`,
+      `https://rest.bandsintown.com/artists/Pura Coco/events/?app_id=${appId}&date=${filter}`,
     )
     return response
   } catch (error) {
