@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
         cf: event.context?.cloudflare,
         env: event.context?.env,
         runtimeConfig: useRuntimeConfig(),
-        process: process.env,
+        process: !!process.env.BANDSINTOWN_APP_ID ? 'present' : 'missing',
       },
     })
   }
