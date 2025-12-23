@@ -23,7 +23,7 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
           <NuxtLink
             v-for="event in data?.slice(0, 5)"
             :key="event.id"
-            :to="`/events/${event.id}`"
+            :to="`/tour/${event.id}`"
             class="bg-(--green) text-(--cream) p-4 rounded-md flex gap-2 justify-between items-center hover:bg-(--red) cursor-pointer transition-colors duration-300"
           >
             <div class="flex gap-6">
