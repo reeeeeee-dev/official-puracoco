@@ -17,6 +17,7 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
       <div class="flex flex-col gap-8">
         <div v-if="error" class="text-base max-w-prose">
           There was an error fetching the events. Please refresh the page or try again later.
+          {{ JSON.stringify(error) }}
         </div>
         <div v-else-if="status === 'pending'">Loading ...</div>
         <div v-else-if="status === 'success'" class="flex flex-col gap-4">
