@@ -62,11 +62,4 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare',
   },
-
-  runtimeConfig: {
-    // Private keys (only available on server-side)
-    bandsintownAppId: process.env.BANDSINTOWN_APP_ID,
-    // Public keys (exposed to client-side)
-    public: {},
-  },
 })
