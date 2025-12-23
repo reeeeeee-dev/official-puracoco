@@ -1,7 +1,8 @@
-export default defineEventHandler(async ({ context }) => {
+export default defineEventHandler(async (event) => {
   // Access the secret from Cloudflare secrets store binding (production/cloudflare dev)
   // Falls back to environment variable for local nuxt dev
-  const appId = context.cloudflare.env?.BANDSINTOWN_APP_ID || useRuntimeConfig().bandsintownAppId
+  const appId =
+    event.context.cloudflare?.env?.BANDSINTOWN_APP_ID || useRuntimeConfig().bandsintownAppId
 
   if (!appId) {
     throw createError({
