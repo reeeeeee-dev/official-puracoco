@@ -5,13 +5,15 @@ export interface BandsInTownArtist {
 
 export interface BandsInTownVenue {
   name: string
+  street_address: string
+  postal_code: string
   city: string
   region: string
   country: string
   latitude: string
   longitude: string
-  type?: string
-  timezone?: string
+  type: string
+  timezone: string
 }
 
 export interface BandsInTownOffer {
@@ -22,15 +24,15 @@ export interface BandsInTownOffer {
 
 export interface BandsInTownEvent {
   id: string
+  artist_id: string
   url: string
   datetime: string
-  on_sale_datetime?: string
-  description?: string
-  title?: string
+  on_sale_datetime: string
+  description: string
+  title: string
   artist: BandsInTownArtist
+  lineup: string[]
   venue: BandsInTownVenue
-  offers?: BandsInTownOffer[]
-  lineup?: string[]
-  ticket_status?: string
-  facebook_rsvp_url?: string
+  offers: BandsInTownOffer[]
+  sold_out?: boolean
 }
