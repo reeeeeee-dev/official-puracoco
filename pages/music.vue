@@ -92,14 +92,14 @@ const updateGradient = (color: string) => {
 
 <template>
   <main
-    class="h-screen p-4 md:p-8 text-(--cream) relative overflow-x-hidden overflow-y-hidden flex flex-col"
+    class="h-screen p-4 md:p-8 text-(--cream) relative overflow-x-hidden overflow-y-hidden flex flex-col items-center justify-center"
     :style="{ '--gradient-color': 'transparent' }"
   >
     <div
       class="page-gradient absolute inset-0 pointer-events-none transition-opacity duration-500"
-    ></div>
-    <h1 class="text-3xl md:text-4xl mb-2 md:mb-4 font-bold shrink-0 relative z-10">Music</h1>
-    <div class="flex-1 flex items-center justify-center min-h-0 relative z-10">
+    />
+    <div class="flex flex-col items-center justify-center relative z-10">
+      <h1 class="text-3xl md:text-4xl font-bold mb-12 md:mb-16">Music</h1>
       <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
         <div
           v-for="(service, index) in streamingServices"
