@@ -4,6 +4,9 @@ import type { BandsInTownEvent } from '~/types/bandsintown'
 
 const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events', {
   server: true,
+  query: {
+    filter: 'upcoming',
+  },
 })
 </script>
 <template>
@@ -19,6 +22,7 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
           There was an error fetching the events. Please refresh the page or try again later.
         </div>
         <div v-else-if="status === 'pending'">Loading ...</div>
+        <div v-else-if="status === 'success' && data?.length === 0">No upcoming shows</div>
         <div v-else-if="status === 'success'" class="flex flex-col gap-4">
           <NuxtLink
             v-for="event in data?.slice(0, 5)"
