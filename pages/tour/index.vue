@@ -21,7 +21,20 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
 
 <template>
   <main class="flex text-(--cream) flex-col max-w-prose mx-auto gap-8 my-auto h-dvh justify-center">
-    <h1 class="text-3xl">Tour</h1>
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl">Tour</h1>
+
+      <iframe
+        src="https://bandsintown.com/artist/id_15542693/track_button?actor_type=ARTIST&background_color=rgba(242,67,51,1)&hover_color=rgba(115,135,123,1)&font=Poppins&bitIcon=show&text=FOLLOW ME&text_color=rgba(255,207,153,1)&locale=en&display_tracker_count=hide&size=large&appId=&affilCode="
+        title="newsletter-widget"
+        height="35"
+        width="200"
+        scrolling="no"
+        frameborder="0"
+        style="border: none; overflow: hidden"
+        allowtransparency="true"
+      />
+    </div>
 
     <div v-if="error" class="text-base max-w-prose">
       There was an error fetching the events. Please refresh the page or try again later.
