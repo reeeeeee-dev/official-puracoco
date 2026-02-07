@@ -2,6 +2,7 @@
 import { ExternalLinkIcon } from 'lucide-vue-next'
 import { streamingServices } from '~/constants/streamingServices'
 import { navLinks } from '~/constants/navLinks'
+import NewsletterForm from '~/components/NewsletterForm.vue'
 </script>
 
 <template>
@@ -55,17 +56,8 @@ import { navLinks } from '~/constants/navLinks'
           </div>
         </div>
 
-        <div class="flex flex-col gap-4 items-center justify-center">
-          <iframe
-            src="https://bandsintown.com/artist/id_15542693/track_button?actor_type=ARTIST&background_color=rgba(242,67,51,1)&hover_color=rgba(115,135,123,1)&font=Poppins&bitIcon=show&text=FOLLOW ME&text_color=rgba(255,207,153,1)&locale=en&display_tracker_count=hide&size=large&appId=&affilCode="
-            title="newsletter-widget"
-            height="35"
-            width="200"
-            scrolling="no"
-            frameborder="0"
-            style="border: none; overflow: hidden"
-            allowtransparency="true"
-          />
+        <div class="flex flex-col gap-4 items-center justify-center overflow-visible h-full w-full">
+          <NewsletterForm />
         </div>
       </div>
 
