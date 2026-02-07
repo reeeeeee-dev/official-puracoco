@@ -10,7 +10,8 @@ const props = defineProps<{
 const containerRef = ref<HTMLElement | null>(null)
 const marqueeHeight = ref(50) // Default height per marquee
 // Start with a safe default for SSR, will be recalculated on mount
-const marqueeCount = ref(typeof window !== 'undefined' ? Math.ceil(window.innerHeight / 50) : 20)
+// Always use the same initial value for SSR and client to avoid hydration mismatch
+const marqueeCount = ref(20)
 
 const calculateMarqueeCount = () => {
   if (containerRef.value) {
