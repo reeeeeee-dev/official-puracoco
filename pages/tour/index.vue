@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ExternalLinkIcon } from 'lucide-vue-next'
 import type { BandsInTownEvent } from '~/types/bandsintown'
 
 defineOptions({
