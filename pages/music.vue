@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { streamingServices } from '~/constants/streamingServices'
+
 defineOptions({
   name: 'MusicPage',
 })
@@ -6,34 +8,6 @@ defineOptions({
 useHead({
   title: 'Music | Pura Coco',
 })
-
-const streamingServices = [
-  {
-    name: 'Spotify',
-    url: 'https://open.spotify.com/artist/03a3TmpMFgHPURsTZZ0iac',
-    color: '#1DB954',
-  },
-  {
-    name: 'Apple Music',
-    url: 'https://music.apple.com/us/artist/pura-coco/1488284425',
-    color: '#FA243C',
-  },
-  {
-    name: 'YouTube',
-    url: 'https://www.youtube.com/playlist?list=OLAK5uy_kl0Z9TKLJRWM_8XasFSyW2mZEK0bCkIuI',
-    color: '#FF0000',
-  },
-  {
-    name: 'YouTube Music',
-    url: 'https://music.youtube.com/channel/UCB71BObmCSIGRAf81MpvRug',
-    color: '#FF0000',
-  },
-  {
-    name: 'Amazon Music',
-    url: 'https://music.amazon.com/artists/B081NV3T33/pura-coco',
-    color: '#00A8E1',
-  },
-]
 
 const getCardShape = (index: number) => {
   const shapes = [

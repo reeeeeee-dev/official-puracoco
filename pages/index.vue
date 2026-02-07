@@ -6,6 +6,7 @@ defineOptions({
 import ScrollIndicator from '~/components/ScrollIndicator.vue'
 import AboutSection from '~/components/AboutSection.vue'
 import TourSection from '~/components/TourSection.vue'
+import FooterSection from '~/components/FooterSection.vue'
 import { useSnapScroll } from '~/composables/useSnapScroll'
 
 useSnapScroll()
@@ -26,5 +27,8 @@ useSnapScroll()
 
     <AboutSection />
     <TourSection />
+    <div class="snap-start snap-always min-h-screen flex items-end bg-(--black)">
+      <FooterSection />
+    </div>
   </div>
 </template>

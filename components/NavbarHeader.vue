@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import logoSvg from '~/assets/star_logo.svg?raw'
+import { navLinks } from '~/constants/navLinks'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -73,44 +74,15 @@ onUnmounted(() => {
       }"
     >
       <NuxtLink
-        to="/"
-        exact-active-class="active"
+        v-for="link in navLinks"
+        :key="link.to"
+        :to="link.to"
+        :exact-active-class="link.to === '/' ? 'active' : undefined"
+        :active-class="link.to !== '/' ? 'active' : undefined"
         class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
         @click="closeMobileMenu"
       >
-        Home
-      </NuxtLink>
-      <NuxtLink
-        to="/about"
-        active-class="active"
-        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
-        @click="closeMobileMenu"
-      >
-        About
-      </NuxtLink>
-      <NuxtLink
-        to="/music"
-        active-class="active"
-        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
-        @click="closeMobileMenu"
-      >
-        Music
-      </NuxtLink>
-      <NuxtLink
-        to="/tour"
-        active-class="active"
-        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
-        @click="closeMobileMenu"
-      >
-        Tour
-      </NuxtLink>
-      <NuxtLink
-        to="/press"
-        active-class="active"
-        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
-        @click="closeMobileMenu"
-      >
-        Press
+        {{ link.name }}
       </NuxtLink>
     </div>
   </nav>
