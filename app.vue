@@ -10,8 +10,10 @@ const route = useRoute()
   <LoadingScreen />
   <NavbarHeader />
 
-  <NuxtPage :class="route.path !== '/' ? 'mt-16' : ''" />
-  <FooterSection v-if="route.path !== '/'" />
+  <div :class="route.path !== '/' ? 'flex flex-col min-h-screen' : ''">
+    <NuxtPage :class="route.path !== '/' ? 'mt-16 grow' : ''" />
+    <FooterSection v-if="route.path !== '/'" />
+  </div>
 </template>
 
 <style>
