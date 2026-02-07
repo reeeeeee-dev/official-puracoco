@@ -58,9 +58,12 @@ export function useSnapScroll() {
     const snapSections = getSnapSections()
     if (index < 0 || index >= snapSections.length) return
 
-    isScrolling = true
     const targetSection = snapSections[index]
-    targetSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    // Check if element is still in the DOM before manipulating
+    if (!targetSection || !document.body.contains(targetSection)) return
+
+    isScrolling = true
+    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
     // Reset scrolling flag after animation completes
     setTimeout(() => {
@@ -74,6 +77,10 @@ export function useSnapScroll() {
 
     if (isScrolling) return
 
+    const snapSections = getSnapSections()
+    // If no sections available, don't process wheel events
+    if (snapSections.length === 0) return
+
     // Accumulate wheel delta
     accumulatedWheelDelta += e.deltaY
 
@@ -85,7 +92,6 @@ export function useSnapScroll() {
     // If accumulated delta exceeds threshold, change section
     if (Math.abs(accumulatedWheelDelta) >= WHEEL_THRESHOLD) {
       const currentIndex = getCurrentSectionIndex()
-      const snapSections = getSnapSections()
 
       let targetIndex = currentIndex
       if (accumulatedWheelDelta > 0 && currentIndex < snapSections.length - 1) {
@@ -113,14 +119,15 @@ export function useSnapScroll() {
     if (isScrolling) return
 
     // If user somehow scrolled (e.g., via keyboard), snap to nearest section
-    const currentIndex = getCurrentSectionIndex()
     const snapSections = getSnapSections()
-
     if (snapSections.length === 0) return
 
+    const currentIndex = getCurrentSectionIndex()
+    
     // Check if we're not aligned with the current section
     const currentSection = snapSections[currentIndex]
-    if (currentSection) {
+    // Verify element is still in the DOM before accessing its properties
+    if (currentSection && document.body.contains(currentSection)) {
       const rect = currentSection.getBoundingClientRect()
       // If not aligned (more than 10px off), snap to it
       if (Math.abs(rect.top) > 10) {
@@ -138,10 +145,10 @@ export function useSnapScroll() {
 
     if (isScrolling) return
 
-    const currentIndex = getCurrentSectionIndex()
     const snapSections = getSnapSections()
-
     if (snapSections.length === 0) return
+
+    const currentIndex = getCurrentSectionIndex()
 
     let targetIndex = currentIndex
     if (e.key === 'ArrowDown' && currentIndex < snapSections.length - 1) {
