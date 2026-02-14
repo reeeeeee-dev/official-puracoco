@@ -8,6 +8,15 @@ const isAboutPage = computed(() => route.path === '/about')
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const useScrolledColors = computed(() => isScrolled.value || isMobileMenuOpen.value)
+
+const linkClasses = computed(() =>
+  useScrolledColors.value
+    ? 'text-(--cream) hover:text-(--red)'
+    : isAboutPage.value
+      ? 'text-(--red) hover:text-(--green)'
+      : 'text-(--cream) hover:text-(--red)'
+)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 10
@@ -43,7 +52,7 @@ onUnmounted(() => {
       <NuxtLink
         to="/"
         class="inline-flex items-center transition-colors"
-        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
+        :class="linkClasses"
         @click="closeMobileMenu"
       >
         <span
@@ -54,7 +63,7 @@ onUnmounted(() => {
       <button
         @click="toggleMobileMenu"
         class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 transition-colors"
-        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
+        :class="linkClasses"
         aria-label="Toggle menu"
       >
         <span
@@ -85,7 +94,7 @@ onUnmounted(() => {
         :exact-active-class="link.to === '/' ? 'active' : undefined"
         :active-class="link.to !== '/' ? 'active' : undefined"
         class="nav-link relative inline-block cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-2 md:py-0"
-        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
+        :class="linkClasses"
         @click="closeMobileMenu"
       >
         {{ link.name }}
