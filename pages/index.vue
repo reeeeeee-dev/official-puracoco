@@ -34,6 +34,28 @@ const aboutImageStyle = computed(() => ({
   transform: `translateY(${scrollY.value * aboutParallaxFactor - window.innerHeight / 4}px)`,
 }))
 
+const aboutSectionRef = ref<HTMLElement | null>(null)
+const aboutInView = ref(false)
+let aboutObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (aboutSectionRef.value) {
+    aboutObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) aboutInView.value = true
+        })
+      },
+      { threshold: 0.8, rootMargin: '0px 0px -150px 0px' },
+    )
+    aboutObserver.observe(aboutSectionRef.value)
+  }
+})
+
+onUnmounted(() => {
+  aboutObserver?.disconnect()
+})
+
 function updateScroll() {
   scrollY.value = window.scrollY
 }
@@ -67,8 +89,11 @@ onUnmounted(() => {
     </div>
 
     <!-- About section -->
-    <div class="h-screen bg-(--black) flex overflow-hidden">
-      <div class="w-1/2 h-full overflow-hidden shrink-0">
+    <div ref="aboutSectionRef" class="h-screen bg-(--black) flex overflow-hidden">
+      <div
+        class="w-1/2 h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
+        :class="aboutInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'"
+      >
         <img
           :src="screamImage"
           alt="About Me Image"
@@ -85,12 +110,28 @@ onUnmounted(() => {
           muted
           src="https://website-host.reetikpatel.me/intro.mp4"
           alt="Intro"
-          class="object-contain"
+          class="object-contain transition-all duration-700 ease-out"
+          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
         />
-        <div class="text-4xl font-bold">Hi! I'm Pura Coco</div>
+        <div
+          class="text-4xl font-bold transition-all duration-700 ease-out"
+          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+          :style="{ transitionDelay: aboutInView ? '200ms' : '0ms' }"
+        >
+          Hi! I'm Pura Coco
+        </div>
+        <div
+          class="text-lg max-w-prose transition-all duration-700 ease-out"
+          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+          :style="{ transitionDelay: aboutInView ? '450ms' : '0ms' }"
+        >
+          <p>Pura Coco is a singer-songwriter making music that’s honest and full of soul.</p>
+        </div>
         <NuxtLink
           to="/about"
-          class="text-(--cream) text-2xl p-4 rounded-md bg-(--red) hover:bg-(--green) transition-colors duration-300 flex items-center gap-2"
+          class="text-(--cream) text-2xl p-4 rounded-md bg-(--red) hover:bg-(--green) transition-all duration-700 ease-out flex items-center gap-2"
+          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+          :style="{ transitionDelay: aboutInView ? '700ms' : '0ms' }"
         >
           Learn more about me <ArrowRightIcon />
         </NuxtLink>
