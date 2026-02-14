@@ -54,8 +54,7 @@ export function useSnapScroll() {
   }
 
   // Ease-in-out for smooth deceleration at start and end
-  const easeInOutCubic = (t: number) =>
-    t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2
+  const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
 
   const snapToSection = (index: number) => {
     if (isScrolling) return
@@ -141,7 +140,7 @@ export function useSnapScroll() {
     if (snapSections.length === 0) return
 
     const currentIndex = getCurrentSectionIndex()
-    
+
     // Check if we're not aligned with the current section
     const currentSection = snapSections[currentIndex]
     // Verify element is still in the DOM before accessing its properties
