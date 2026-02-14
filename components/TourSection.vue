@@ -61,18 +61,18 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
             </div>
             <ArrowRightIcon class="size-6" />
           </NuxtLink>
-          <NuxtLink
-            to="/tour"
-            class="text-(--cream) p-4 flex gap-2 justify-between items-center hover:text-(--red) cursor-pointer transition-all duration-300"
-          >
-            <div class="flex gap-6">
-              <div class="flex flex-col items-center">
-                <div class="text-xl">More events</div>
-              </div>
-            </div>
-            <ArrowRightIcon class="size-6" />
-          </NuxtLink>
         </div>
+        <NuxtLink
+          to="/tour"
+          class="text-(--cream) p-4 flex gap-2 justify-between items-center hover:bg-(--green) cursor-pointer transition-all duration-300 bg-(--red) rounded-md"
+        >
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center">
+              <div class="text-xl">See all events</div>
+            </div>
+          </div>
+          <ArrowRightIcon class="size-6" />
+        </NuxtLink>
       </div>
     </div>
   </div>
