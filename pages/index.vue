@@ -4,7 +4,6 @@ defineOptions({
 })
 
 import ScrollIndicator from '~/components/ScrollIndicator.vue'
-import AboutSection from '~/components/AboutSection.vue'
 import TourSection from '~/components/TourSection.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import { useSnapScroll } from '~/composables/useSnapScroll'
@@ -28,12 +27,11 @@ useSnapScroll()
         class="size-screen object-cover absolute -top-100 right-0"
       />
       <div class="flex items-center justify-evenly bg-white w-screen h-screen">
-        <h1 class="text-3xl text-(--cream) z-10">Hello</h1>
+        <h1 class="text-[15vw] text-(--cream) font-bold font-[Gwendolyn] z-10">Pura Coco</h1>
       </div>
       <ScrollIndicator />
     </div>
 
-    <AboutSection />
     <TourSection />
     <div class="snap-start snap-always min-h-screen flex items-end bg-(--black)">
       <FooterSection />

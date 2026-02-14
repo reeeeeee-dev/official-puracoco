@@ -16,6 +16,8 @@ body {
 
 html.snap-scroll {
   scroll-behavior: smooth;
+  /* Account for fixed navbar (h-16) so snapped sections don't sit under it */
+  scroll-padding-top: 4rem;
 }
 
 /* Only enable snap scrolling on desktop/tablet, not mobile */

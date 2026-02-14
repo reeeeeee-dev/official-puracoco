@@ -23,7 +23,7 @@ const route = useRoute()
 
     <div :class="route.path !== '/' ? 'flex flex-col min-h-screen' : ''">
       <NuxtPage :class="route.path !== '/' ? 'mt-16 grow' : ''" />
-      <FooterSection v-if="route.path !== '/'" />
+      <FooterSection v-if="route.path !== '/' && route.path !== '/about'" />
     </div>
   </main>
 </template>
