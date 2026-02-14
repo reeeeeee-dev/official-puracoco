@@ -55,7 +55,7 @@ onUnmounted(() => {
       <img
         src="~/assets/red_face.jpg"
         alt="Pura Coco"
-        class="size-screen object-cover absolute -top-100 right-0 will-change-transform"
+        class="size-screen object-cover absolute -top-120 right-0 will-change-transform"
         :style="heroImageStyle"
       />
       <div class="flex items-center justify-center bg-white w-screen h-screen">
