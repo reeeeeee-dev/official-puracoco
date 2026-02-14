@@ -87,7 +87,7 @@ onUnmounted(() => {
 
     <TourSection />
 
-    <div class="min-h-screen flex items-end bg-(--black)">
+    <div class="min-h-screen flex flex-col items-end bg-(--black)">
       <FooterSection />
     </div>
   </main>
