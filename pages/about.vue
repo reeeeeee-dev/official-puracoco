@@ -49,6 +49,7 @@ onUnmounted(() => {
           class="absolute w-full top-12 h-full object-cover object-top"
         />
       </div>
+      <ScrollIndicator color="var(--red)" />
     </div>
 
     <!-- About section (text + image) -->

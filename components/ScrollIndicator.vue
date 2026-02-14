@@ -1,10 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = withDefaults(
+  defineProps<{
+    color?: string
+  }>(),
+  { color: 'var(--cream)' },
+)
+</script>
 
 <template>
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-in">
-    <div class="relative w-6 h-12 border-2 border-(--cream) rounded-xl overflow-hidden">
+    <div
+      class="relative w-6 h-12 border-2 rounded-xl overflow-hidden"
+      :style="{ borderColor: props.color }"
+    >
       <div
-        class="absolute left-1/2 top-2 -translate-x-1/2 size-2 bg-(--cream) rounded-full bounce-oval"
+        class="absolute left-1/2 top-2 -translate-x-1/2 size-2 rounded-full bounce-oval"
+        :style="{ backgroundColor: props.color }"
       ></div>
     </div>
   </div>
