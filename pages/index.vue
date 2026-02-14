@@ -74,8 +74,11 @@ onUnmounted(() => {
     </div>
 
     <!-- About section -->
-    <div class="snap-start snap-always h-screen bg-(--black) overflow-hidden flex">
-      <div class="flex items-center justify-evenly h-screen w-screen z-50 bg-(--black)">
+    <!-- TODO: For some reason, removing the flex from the div here breaks the section -->
+    <div class="snap-start snap-always h-screen bg-(--black) flex">
+      <div
+        class="flex items-center justify-evenly h-screen w-screen z-20 bg-(--black) overflow-hidden"
+      >
         <img :src="screamImage" alt="About Me Image" class="w-1/2 object-contain" />
         <NuxtLink
           to="/about"
