@@ -14,24 +14,3 @@ body {
   background-color: var(--black);
 }
 
-html.snap-scroll {
-  scroll-behavior: smooth;
-  /* Account for fixed navbar (h-16) so snapped sections don't sit under it */
-  scroll-padding-top: 4rem;
-}
-
-/* Disable all scroll snap on mobile; enable only on desktop/tablet */
-@media (max-width: 767px) {
-  html.snap-scroll {
-    scroll-snap-type: none;
-  }
-  .snap-start {
-    scroll-snap-align: none;
-  }
-}
-
-@media (min-width: 768px) {
-  html.snap-scroll {
-    @apply snap-y snap-mandatory;
-  }
-}

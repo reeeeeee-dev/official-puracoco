@@ -6,11 +6,8 @@ defineOptions({
 import ScrollIndicator from '~/components/ScrollIndicator.vue'
 import TourSection from '~/components/TourSection.vue'
 import FooterSection from '~/components/FooterSection.vue'
-import { useSnapScroll } from '~/composables/useSnapScroll'
 import { ArrowRightIcon } from 'lucide-vue-next'
 import screamImage from '~/assets/scream.jpg'
-
-useSnapScroll()
 
 // When navigating from another page, keep content hidden until we've scrolled to top to avoid flash to tour section
 const navigatedToIndex = useState<boolean>('navigatedToIndex', () => false)
@@ -51,7 +48,7 @@ onUnmounted(() => {
     class="transition-opacity duration-300"
     :class="[revealContent ? 'opacity-100' : 'opacity-0 pointer-events-none']"
   >
-    <div class="relative snap-start snap-always overflow-hidden">
+    <div class="relative overflow-hidden">
       <img
         src="~/assets/hero.jpg"
         alt="Pura Coco"
@@ -66,7 +63,7 @@ onUnmounted(() => {
 
     <!-- About section -->
     <!-- TODO: For some reason, removing the flex from the div here breaks the section. Also propagation of the z-index is not working as expected. -->
-    <div class="snap-start snap-always h-screen bg-(--black) flex">
+    <div class="h-screen bg-(--black) flex">
       <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover z-10" />
       <div
         class="flex flex-col items-center justify-start h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
@@ -90,7 +87,7 @@ onUnmounted(() => {
     </div>
 
     <TourSection />
-    <div class="snap-start snap-always min-h-screen flex items-end bg-(--black)">
+    <div class="min-h-screen flex items-end bg-(--black)">
       <FooterSection />
     </div>
   </div>

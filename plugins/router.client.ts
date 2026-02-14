@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
       clearTimeout(scrollTimeout)
       scrollTimeout = null
     }
-    // When navigating to index, don't scroll yet – the old page is still in the DOM; useSnapScroll will scroll after transition
+    // When navigating to index, don't scroll yet – the old page is still in the DOM; scroll after transition
     if (process.client && to.path !== '/') {
       scrollToTop()
     }
