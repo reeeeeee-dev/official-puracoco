@@ -37,7 +37,7 @@ onUnmounted(() => {
   <main>
     <div class="relative h-screen bg-(--cream) z-0">
       <!-- Sticky background across both sections -->
-      <div class="sticky top-16 w-full h-screen">
+      <div class="sticky top-16 w-full h-screen overflow-hidden">
         <MarqueeFill
           text="Pura Coco"
           class="absolute inset-0 top-12 w-full h-full font-[Poppins] font-extrabold"
