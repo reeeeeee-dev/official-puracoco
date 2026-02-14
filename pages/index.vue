@@ -113,19 +113,21 @@ onUnmounted(() => {
           class="object-contain transition-all duration-700 ease-out"
           :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
         />
-        <div
-          class="text-4xl font-bold transition-all duration-700 ease-out"
-          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-          :style="{ transitionDelay: aboutInView ? '200ms' : '0ms' }"
-        >
-          Hi! I'm Pura Coco
-        </div>
-        <div
-          class="text-lg max-w-prose transition-all duration-700 ease-out"
-          :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-          :style="{ transitionDelay: aboutInView ? '450ms' : '0ms' }"
-        >
-          <p>Pura Coco is a singer-songwriter making music that’s honest and full of soul.</p>
+        <div class="flex flex-col gap-4 text-center">
+          <div
+            class="text-4xl font-bold transition-all duration-700 ease-out"
+            :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+            :style="{ transitionDelay: aboutInView ? '200ms' : '0ms' }"
+          >
+            Hi! I'm Pura Coco
+          </div>
+          <div
+            class="text-lg max-w-prose transition-all duration-700 ease-out"
+            :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+            :style="{ transitionDelay: aboutInView ? '450ms' : '0ms' }"
+          >
+            <p>I'm a singer-songwriter making music that’s honest and full of soul.</p>
+          </div>
         </div>
         <NuxtLink
           to="/about"
