@@ -63,7 +63,7 @@ import NewsletterForm from '~/components/NewsletterForm.vue'
 
       <!-- Bottom Bar -->
       <div
-        class="border-t border-(--cream)/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+        class="border-t border-(--cream)/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 mb-12"
       >
         <p class="text-xs md:text-sm opacity-60">
           © {{ new Date().getFullYear() }} Pura Coco. All rights reserved.
