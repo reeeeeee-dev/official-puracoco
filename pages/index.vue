@@ -76,10 +76,11 @@ onUnmounted(() => {
     <!-- About section -->
     <!-- TODO: For some reason, removing the flex from the div here breaks the section -->
     <div class="snap-start snap-always h-screen bg-(--black) flex">
+      <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover" />
       <div
-        class="flex items-center justify-evenly h-screen w-screen z-20 bg-(--black) overflow-hidden"
+        class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-8 text-(--cream)"
       >
-        <img :src="screamImage" alt="About Me Image" class="w-1/2 object-contain" />
+        <div class="text-4xl font-bold">Hi! I'm Pura Coco</div>
         <NuxtLink
           to="/about"
           class="text-(--cream) text-2xl p-4 rounded-md bg-(--red) hover:bg-(--green) transition-colors duration-300 flex items-center gap-2"
