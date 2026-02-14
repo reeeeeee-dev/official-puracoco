@@ -74,9 +74,9 @@ onUnmounted(() => {
     </div>
 
     <!-- About section -->
-    <!-- TODO: For some reason, removing the flex from the div here breaks the section -->
+    <!-- TODO: For some reason, removing the flex from the div here breaks the section. Also propagation of the z-index is not working as expected. -->
     <div class="snap-start snap-always h-screen bg-(--black) flex">
-      <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover" />
+      <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover z-10" />
       <div
         class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-8 text-(--cream)"
       >
