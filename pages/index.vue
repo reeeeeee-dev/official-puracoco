@@ -29,6 +29,11 @@ const heroImageStyle = computed(() => ({
   transform: `translateY(${-scrollY.value * parallaxFactor}px)`,
 }))
 
+const aboutParallaxFactor = 0.25
+const aboutImageStyle = computed(() => ({
+  transform: `translateY(${scrollY.value * aboutParallaxFactor - window.innerHeight / 4}px)`,
+}))
+
 function updateScroll() {
   scrollY.value = window.scrollY
 }
@@ -62,9 +67,15 @@ onUnmounted(() => {
     </div>
 
     <!-- About section -->
-    <!-- TODO: For some reason, removing the flex from the div here breaks the section. Also propagation of the z-index is not working as expected. -->
-    <div class="h-screen bg-(--black) flex">
-      <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover z-10" />
+    <div class="h-screen bg-(--black) flex overflow-hidden">
+      <div class="w-1/2 h-full overflow-hidden shrink-0">
+        <img
+          :src="screamImage"
+          alt="About Me Image"
+          class="size-full object-contain z-10 will-change-transform"
+          :style="aboutImageStyle"
+        />
+      </div>
       <div
         class="flex flex-col items-center justify-start h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
       >
