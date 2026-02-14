@@ -77,7 +77,7 @@ onUnmounted(() => {
         />
       </div>
       <div
-        class="flex flex-col items-center justify-start h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
+        class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
       >
         <video
           autoplay
