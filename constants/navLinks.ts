@@ -8,5 +8,4 @@ export const navLinks: NavLink[] = [
   { name: 'About', to: '/about' },
   { name: 'Music', to: '/music' },
   { name: 'Tour', to: '/tour' },
-  { name: 'Press', to: '/press' },
 ]
