@@ -71,7 +71,7 @@ onUnmounted(() => {
     <div class="snap-start snap-always h-screen bg-(--black) flex">
       <img :src="screamImage" alt="About Me Image" class="w-2/3 h-full object-cover z-10" />
       <div
-        class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-8 text-(--cream)"
+        class="flex flex-col items-center justify-start h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
       >
         <video
           autoplay
