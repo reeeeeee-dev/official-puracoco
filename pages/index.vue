@@ -47,8 +47,10 @@ onUnmounted(() => {
         class="size-screen object-cover absolute -top-100 right-0 will-change-transform"
         :style="heroImageStyle"
       />
-      <div class="flex items-center justify-evenly bg-white w-screen h-screen">
-        <h1 class="text-[15vw] text-(--cream) font-bold font-[Gwendolyn] z-10">Pura Coco</h1>
+      <div class="flex items-center justify-center bg-white w-screen h-screen">
+        <h1 class="text-[15vw] rotate-45 text-(--cream) font-bold font-[Gwendolyn] z-10">
+          Pura Coco
+        </h1>
       </div>
       <ScrollIndicator />
     </div>
