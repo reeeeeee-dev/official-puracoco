@@ -10,6 +10,19 @@ import { useSnapScroll } from '~/composables/useSnapScroll'
 
 useSnapScroll()
 
+// When navigating from another page, keep content hidden until we've scrolled to top to avoid flash to tour section
+const navigatedToIndex = useState<boolean>('navigatedToIndex', () => false)
+const revealContent = ref(!navigatedToIndex.value)
+onMounted(() => {
+  if (navigatedToIndex.value) {
+    navigatedToIndex.value = false
+    const t = setTimeout(() => {
+      revealContent.value = true
+    }, 700)
+    onUnmounted(() => clearTimeout(t))
+  }
+})
+
 const scrollY = ref(0)
 const parallaxFactor = 0.35
 
@@ -32,7 +45,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div
+    class="transition-opacity duration-300"
+    :class="[revealContent ? 'opacity-100' : 'opacity-0 pointer-events-none']"
+  >
     <div class="relative snap-start snap-always overflow-hidden">
       <!-- <video
         autoplay

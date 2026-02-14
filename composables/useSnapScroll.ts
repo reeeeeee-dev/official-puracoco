@@ -6,7 +6,6 @@ export function useSnapScroll() {
   let wheelTimeout: number | null = null
   let accumulatedWheelDelta = 0
   const WHEEL_THRESHOLD = 50 // Minimum wheel delta to trigger section change
-  const SCROLL_DURATION_MS = 1200 // Duration of snap scroll animation
 
   // Check if device is mobile
   const isMobile = () => {
@@ -38,9 +37,21 @@ export function useSnapScroll() {
     const snapSections = getSnapSections()
     if (snapSections.length === 0) return 0
 
+    const viewportCenterY = window.innerHeight / 2
+
+    // Find the section that contains the viewport center (so we correctly identify the last section when it's taller than the viewport)
+    for (let i = 0; i < snapSections.length; i++) {
+      const section = snapSections[i]
+      if (!section) continue
+      const rect = section.getBoundingClientRect()
+      if (rect.top <= viewportCenterY && rect.bottom >= viewportCenterY) {
+        return i
+      }
+    }
+
+    // Fallback: section whose top is closest to top of viewport
     let currentSectionIndex = 0
     let minDistance = Infinity
-
     snapSections.forEach((section, index) => {
       const rect = section.getBoundingClientRect()
       const distance = Math.abs(rect.top)
@@ -49,12 +60,8 @@ export function useSnapScroll() {
         currentSectionIndex = index
       }
     })
-
     return currentSectionIndex
   }
-
-  // Ease-in-out for smooth deceleration at start and end
-  const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
 
   const snapToSection = (index: number) => {
     if (isScrolling) return
@@ -63,29 +70,19 @@ export function useSnapScroll() {
     if (index < 0 || index >= snapSections.length) return
 
     const targetSection = snapSections[index]
-    // Check if element is still in the DOM before manipulating
     if (!targetSection || !document.body.contains(targetSection)) return
 
     isScrolling = true
-    const startTop = window.scrollY
-    const targetTop = targetSection.offsetTop
-    const distance = targetTop - startTop
-    const startTime = performance.now()
+    // Last section: align to end so the footer isn't cut off when it's taller than the viewport
+    const isLastSection = index === snapSections.length - 1
+    targetSection.scrollIntoView({
+      behavior: 'smooth',
+      block: isLastSection ? 'end' : 'start',
+    })
 
-    const tick = (now: number) => {
-      const elapsed = now - startTime
-      const progress = Math.min(elapsed / SCROLL_DURATION_MS, 1)
-      const eased = easeInOutCubic(progress)
-      window.scrollTo(0, startTop + distance * eased)
-
-      if (progress < 1) {
-        requestAnimationFrame(tick)
-      } else {
-        isScrolling = false
-      }
-    }
-
-    requestAnimationFrame(tick)
+    setTimeout(() => {
+      isScrolling = false
+    }, 600)
   }
 
   const handleWheel = (e: WheelEvent) => {
@@ -130,26 +127,29 @@ export function useSnapScroll() {
   }
 
   const handleScroll = () => {
-    // Disable snap behavior on mobile
     if (isMobile()) return
-
     if (isScrolling) return
 
-    // If user somehow scrolled (e.g., via keyboard), snap to nearest section
+    // Skip snap correction during init so we don't snap to wrong section when navigating to home
+    if (Date.now() < initScrollGuardUntil) return
+
     const snapSections = getSnapSections()
     if (snapSections.length === 0) return
 
     const currentIndex = getCurrentSectionIndex()
-
-    // Check if we're not aligned with the current section
     const currentSection = snapSections[currentIndex]
-    // Verify element is still in the DOM before accessing its properties
-    if (currentSection && document.body.contains(currentSection)) {
-      const rect = currentSection.getBoundingClientRect()
-      // If not aligned (more than 10px off), snap to it
-      if (Math.abs(rect.top) > 10) {
-        snapToSection(currentIndex)
-      }
+    if (!currentSection || !document.body.contains(currentSection)) return
+
+    const rect = currentSection.getBoundingClientRect()
+    const isLastSection = currentIndex === snapSections.length - 1
+    const viewportCenterY = window.innerHeight / 2
+    // Last section: aligned if viewport center is inside it (don't force bottom-aligned or we block scrolling up)
+    // Other sections: aligned when top is at viewport top
+    const isAligned = isLastSection
+      ? rect.top <= viewportCenterY && rect.bottom >= viewportCenterY
+      : Math.abs(rect.top) <= 10
+    if (!isAligned) {
+      snapToSection(currentIndex)
     }
   }
 
@@ -182,32 +182,28 @@ export function useSnapScroll() {
     }
   }
 
+  let initScrollGuardUntil = 0
+  let postTransitionScrollTimeout: ReturnType<typeof setTimeout> | null = null
+
   onMounted(async () => {
-    // Only enable snap scrolling behavior on desktop
     if (isMobile()) return
 
-    // Wait for DOM to be fully rendered
-    await nextTick()
+    // Guard long enough that we don't snap to wrong section after delayed scroll (page transition is 500ms)
+    initScrollGuardUntil = Date.now() + 900
 
-    // Use double requestAnimationFrame to ensure layout is complete
+    await nextTick()
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        // First, ensure we're at the top
         window.scrollTo({ top: 0, behavior: 'auto' })
-
-        // Trigger a minimal scroll to activate snap behavior
-        // Scroll snap only activates during scrolling, not on initial load
-        // So we simulate a tiny scroll to trigger the snap
-        setTimeout(() => {
-          // Scroll down 1px (imperceptible) to trigger snap detection
-          window.scrollBy({ top: 1, behavior: 'auto' })
-          // Immediately snap back to top
-          requestAnimationFrame(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          })
-        }, 50)
       })
     })
+
+    // When navigating from another page, the old page leaves the DOM after the transition;
+    // scroll to top again once the DOM is stable so we don't end up on the tour section
+    postTransitionScrollTimeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+      postTransitionScrollTimeout = null
+    }, 700)
 
     // Add wheel listener to control scrolling
     window.addEventListener('wheel', handleWheel, { passive: false })
@@ -233,6 +229,10 @@ export function useSnapScroll() {
     }
     if (wheelTimeout) {
       clearTimeout(wheelTimeout)
+    }
+    if (postTransitionScrollTimeout) {
+      clearTimeout(postTransitionScrollTimeout)
+      postTransitionScrollTimeout = null
     }
   })
 }
