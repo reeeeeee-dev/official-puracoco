@@ -19,13 +19,13 @@ useSnapScroll()
       <div class="sticky snap-align-none top-16 w-full h-screen">
         <MarqueeFill
           text="Pura Coco"
-          class="absolute inset-0 w-full h-full font-[Poppins] font-extrabold"
+          class="absolute inset-0 top-12 w-full h-full font-[Poppins] font-extrabold"
           textClass="text-(--red) text-9xl h-24 uppercase"
         />
         <img
           :src="portraitImage"
           alt="Pura Coco"
-          class="absolute w-full h-full object-cover object-top"
+          class="absolute w-full top-12 h-full object-cover object-top"
         />
       </div>
     </div>

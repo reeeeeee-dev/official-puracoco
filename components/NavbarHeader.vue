@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import logoSvg from '~/assets/star_logo.svg?raw'
 import { navLinks } from '~/constants/navLinks'
+
+const route = useRoute()
+const isAboutPage = computed(() => route.path === '/about')
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -39,7 +42,8 @@ onUnmounted(() => {
     <div class="flex justify-between items-center w-full md:w-auto h-16">
       <NuxtLink
         to="/"
-        class="inline-flex items-center text-(--cream) hover:text-(--red) transition-colors"
+        class="inline-flex items-center transition-colors"
+        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
         @click="closeMobileMenu"
       >
         <span
@@ -49,7 +53,8 @@ onUnmounted(() => {
       </NuxtLink>
       <button
         @click="toggleMobileMenu"
-        class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 text-(--cream) hover:text-(--red) transition-colors"
+        class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 transition-colors"
+        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
         aria-label="Toggle menu"
       >
         <span
@@ -79,7 +84,8 @@ onUnmounted(() => {
         :to="link.to"
         :exact-active-class="link.to === '/' ? 'active' : undefined"
         :active-class="link.to !== '/' ? 'active' : undefined"
-        class="nav-link relative inline-block cursor-pointer transition-colors text-(--cream) hover:text-(--red) w-full md:w-auto text-center md:text-left py-2 md:py-0"
+        class="nav-link relative inline-block cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-2 md:py-0"
+        :class="isAboutPage ? 'text-(--red) hover:text-(--green)' : 'text-(--cream) hover:text-(--red)'"
         @click="closeMobileMenu"
       >
         {{ link.name }}
