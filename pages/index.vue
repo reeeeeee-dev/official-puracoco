@@ -97,8 +97,9 @@ onUnmounted(() => {
       </div>
     </div>
 
+    <WavePattern wrapper-class="bg-(--black)" flip />
     <TourSection />
-    <div class="min-h-screen flex items-end bg-(--black)">
+    <div class="min-h-screen flex flex-col items-end bg-(--black)">
       <FooterSection />
     </div>
   </div>
