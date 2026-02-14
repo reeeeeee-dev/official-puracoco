@@ -6,6 +6,7 @@ export function useSnapScroll() {
   let wheelTimeout: number | null = null
   let accumulatedWheelDelta = 0
   const WHEEL_THRESHOLD = 50 // Minimum wheel delta to trigger section change
+  const SCROLL_DURATION_MS = 1200 // Duration of snap scroll animation
 
   // Check if device is mobile
   const isMobile = () => {
@@ -52,6 +53,10 @@ export function useSnapScroll() {
     return currentSectionIndex
   }
 
+  // Ease-in-out for smooth deceleration at start and end
+  const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2
+
   const snapToSection = (index: number) => {
     if (isScrolling) return
 
@@ -63,12 +68,25 @@ export function useSnapScroll() {
     if (!targetSection || !document.body.contains(targetSection)) return
 
     isScrolling = true
-    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const startTop = window.scrollY
+    const targetTop = targetSection.offsetTop
+    const distance = targetTop - startTop
+    const startTime = performance.now()
 
-    // Reset scrolling flag after animation completes
-    setTimeout(() => {
-      isScrolling = false
-    }, 600)
+    const tick = (now: number) => {
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / SCROLL_DURATION_MS, 1)
+      const eased = easeInOutCubic(progress)
+      window.scrollTo(0, startTop + distance * eased)
+
+      if (progress < 1) {
+        requestAnimationFrame(tick)
+      } else {
+        isScrolling = false
+      }
+    }
+
+    requestAnimationFrame(tick)
   }
 
   const handleWheel = (e: WheelEvent) => {
