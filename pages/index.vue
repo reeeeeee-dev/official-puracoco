@@ -53,17 +53,15 @@ onUnmounted(() => {
   >
     <div class="relative snap-start snap-always overflow-hidden">
       <img
-        src="~/assets/red_face.jpg"
+        src="~/assets/hero.jpg"
         alt="Pura Coco"
-        class="size-screen object-cover absolute -top-120 right-0 will-change-transform"
+        class="w-screen object-contain absolute will-change-transform"
         :style="heroImageStyle"
       />
-      <div class="flex items-center justify-center bg-white w-screen h-screen">
-        <h1 class="text-[15vw] rotate-45 text-(--cream) font-bold font-[Gwendolyn] z-10">
-          Pura Coco
-        </h1>
+      <div class="flex items-start justify-center bg-[#e8ecd7] w-screen h-screen">
+        <h1 class="text-[15vw] text-(--red) font-bold font-[Gwendolyn] z-10">Pura Coco</h1>
       </div>
-      <ScrollIndicator />
+      <ScrollIndicator color="var(--red)" />
     </div>
 
     <!-- About section -->

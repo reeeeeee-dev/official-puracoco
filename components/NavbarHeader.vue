@@ -15,7 +15,7 @@ const linkClasses = computed(() =>
     ? 'text-(--cream) hover:text-(--red)'
     : isAboutPage.value
       ? 'text-(--red) hover:text-(--green)'
-      : 'text-(--cream) hover:text-(--red)',
+      : 'text-(--red) hover:text-(--green)',
 )
 
 const handleScroll = () => {
