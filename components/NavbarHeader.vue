@@ -15,7 +15,7 @@ const linkClasses = computed(() =>
     ? 'text-(--cream) hover:text-(--red)'
     : isAboutPage.value
       ? 'text-(--red) hover:text-(--green)'
-      : 'text-(--cream) hover:text-(--red)'
+      : 'text-(--cream) hover:text-(--red)',
 )
 
 const handleScroll = () => {
@@ -58,7 +58,7 @@ onUnmounted(() => {
         <span
           class="inline-block size-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
           v-html="logoSvg"
-        ></span>
+        />
       </NuxtLink>
       <button
         @click="toggleMobileMenu"
@@ -69,15 +69,15 @@ onUnmounted(() => {
         <span
           class="block w-6 h-0.5 bg-current transition-all duration-300"
           :class="{ 'rotate-45 translate-y-2': isMobileMenuOpen, '': !isMobileMenuOpen }"
-        ></span>
+        />
         <span
           class="block w-6 h-0.5 bg-current transition-all duration-300"
           :class="{ 'opacity-0': isMobileMenuOpen, 'opacity-100': !isMobileMenuOpen }"
-        ></span>
+        />
         <span
           class="block w-6 h-0.5 bg-current transition-all duration-300"
           :class="{ '-rotate-45 -translate-y-2': isMobileMenuOpen, '': !isMobileMenuOpen }"
-        ></span>
+        />
       </button>
     </div>
     <div
@@ -124,7 +124,7 @@ onUnmounted(() => {
 .nav-link.active::after,
 .nav-link.router-link-active::after,
 .nav-link.router-link-exact-active::after,
-.nav-link[aria-current="page"]::after {
+.nav-link[aria-current='page']::after {
   transform: scaleX(1);
 }
 </style>

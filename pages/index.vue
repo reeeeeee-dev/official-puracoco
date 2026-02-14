@@ -7,6 +7,8 @@ import ScrollIndicator from '~/components/ScrollIndicator.vue'
 import TourSection from '~/components/TourSection.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import { useSnapScroll } from '~/composables/useSnapScroll'
+import { ArrowRightIcon } from 'lucide-vue-next'
+import screamImage from '~/assets/scream.jpg'
 
 useSnapScroll()
 
@@ -69,6 +71,19 @@ onUnmounted(() => {
         </h1>
       </div>
       <ScrollIndicator />
+    </div>
+
+    <!-- About section -->
+    <div class="snap-start snap-always h-screen bg-(--black) overflow-hidden flex">
+      <div class="flex items-center justify-evenly h-screen w-screen z-50 bg-(--black)">
+        <img :src="screamImage" alt="About Me Image" class="w-1/2 object-contain" />
+        <NuxtLink
+          to="/about"
+          class="text-(--cream) text-2xl p-4 rounded-full bg-(--green) hover:bg-(--red) transition-colors duration-300 flex items-center gap-2"
+        >
+          Learn more about me <ArrowRightIcon />
+        </NuxtLink>
+      </div>
     </div>
 
     <TourSection />
