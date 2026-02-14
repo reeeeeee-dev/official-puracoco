@@ -52,13 +52,6 @@ onUnmounted(() => {
     :class="[revealContent ? 'opacity-100' : 'opacity-0 pointer-events-none']"
   >
     <div class="relative snap-start snap-always overflow-hidden">
-      <!-- <video
-        autoplay
-        muted
-        src="https://website-host.reetikpatel.me/intro.mp4"
-        alt="Intro"
-        class="w-screen h-screen object-cover"
-      /> -->
       <img
         src="~/assets/red_face.jpg"
         alt="Pura Coco"
@@ -80,6 +73,14 @@ onUnmounted(() => {
       <div
         class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-8 text-(--cream)"
       >
+        <video
+          autoplay
+          loop
+          muted
+          src="https://website-host.reetikpatel.me/intro.mp4"
+          alt="Intro"
+          class="object-contain"
+        />
         <div class="text-4xl font-bold">Hi! I'm Pura Coco</div>
         <NuxtLink
           to="/about"
