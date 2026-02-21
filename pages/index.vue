@@ -46,7 +46,7 @@ onMounted(() => {
           if (entry.isIntersecting) aboutInView.value = true
         })
       },
-      { threshold: 0.8, rootMargin: '0px 0px -150px 0px' },
+      { threshold: 0.5, rootMargin: '0px 0px -150px 0px' },
     )
     aboutObserver.observe(aboutSectionRef.value)
   }
