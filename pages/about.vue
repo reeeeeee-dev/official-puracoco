@@ -68,12 +68,19 @@ onUnmounted(() => {
           </p>
           <br />
           <p>
+            Her heartfelt and vulnerable lyrics draw listeners into a compelling narrative, making
+            her music a profound experience. Sharing stages with renowned artists like
+            <em>Leon Bridges</em>, <em>Little Simz</em>, and <em>Japanese Breakfast</em>, Coco's
+            dynamic performances and captivating presence mark her as a standout artist in the R&B
+            scene, poised to leave a lasting impact.
+          </p>
+          <br />
+          <p>
             With soulful vocals and raw emotional honesty, her music bridges cultures and genres,
             creating an authentic experience that speaks to the heart. Through her artistry, Pura
             Coco invites listeners into a world where tradition meets innovation, and where every
             note tells a story of identity, passion, and authenticity.
           </p>
-          <br />
         </div>
 
         <div class="w-1/2">
