@@ -5,6 +5,7 @@ defineOptions({
 
 import MarqueeFill from '~/components/MarqueeFill.vue'
 import FooterSection from '~/components/FooterSection.vue'
+import ImageGallery from '~/components/ImageGallery.vue'
 import portraitImage from '~/assets/portrait1.png'
 import fullBodyImage from '~/assets/full_body.jpg'
 
@@ -85,6 +86,7 @@ onUnmounted(() => {
       </div>
     </div>
 
+    <ImageGallery />
     <FooterSection />
   </main>
 </template>
