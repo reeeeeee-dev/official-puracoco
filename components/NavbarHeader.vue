@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ExternalLinkIcon } from 'lucide-vue-next'
 import logoSvg from '~/assets/star_logo.svg?raw'
 import { navLinks } from '~/constants/navLinks'
 
@@ -98,6 +99,14 @@ onUnmounted(() => {
         @click="closeMobileMenu"
       >
         {{ link.name }}
+      </NuxtLink>
+      <NuxtLink
+        href="https://www.instagram.com/puracocoo/"
+        class="nav-link relative inline-flex items-center gap-2 cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-2 md:py-0"
+        :class="linkClasses"
+        @click="closeMobileMenu"
+      >
+        Merch <ExternalLinkIcon :size="16" />
       </NuxtLink>
     </div>
   </nav>
