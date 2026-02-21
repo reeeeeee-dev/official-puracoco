@@ -85,8 +85,6 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <TourSection />
-
     <FooterSection />
   </main>
 </template>
