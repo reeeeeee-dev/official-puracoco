@@ -14,3 +14,7 @@ body {
   background-color: var(--black);
 }
 
+body {
+  overflow-x: clip;
+}
+

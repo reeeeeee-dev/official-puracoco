@@ -52,7 +52,7 @@ onUnmounted(() => {
     <div v-if="isVisible" class="fixed inset-0 z-50 flex items-center justify-center bg-(--black)">
       <div class="flex flex-col items-center gap-6">
         <div
-          class="size-96 animate-pulse [&_svg]:w-full [&_svg]:h-full [&_svg]:block text-(--cream)"
+          class="size-44 min-[400px]:size-56 sm:size-72 md:size-96 animate-pulse [&_svg]:w-full [&_svg]:h-full [&_svg]:block text-(--cream)"
           v-html="logoSvg"
         />
         <LoadingDots />

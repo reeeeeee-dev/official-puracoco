@@ -36,13 +36,13 @@ onUnmounted(() => {
 
 <template>
   <main>
-    <div class="relative h-screen bg-(--cream) z-0">
+    <div class="relative min-h-dvh bg-(--cream) z-0">
       <!-- Sticky background across both sections -->
-      <div class="sticky top-16 w-full h-screen overflow-hidden">
+      <div class="sticky top-16 w-full min-h-[calc(100dvh-4rem)] h-[calc(100dvh-4rem)] overflow-hidden">
         <MarqueeFill
           text="Pura Coco"
           class="absolute inset-0 top-12 w-full h-full font-[Poppins] font-extrabold"
-          textClass="text-(--red) text-9xl h-24 uppercase"
+          textClass="text-(--red) text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl h-12 sm:h-16 md:h-20 lg:h-24 uppercase"
         />
         <img
           :src="portraitImage"
@@ -54,10 +54,12 @@ onUnmounted(() => {
     </div>
 
     <!-- About section (text + image) -->
-    <div ref="aboutSectionRef" class="relative h-screen overflow-hidden">
-      <div class="h-full flex items-center justify-between">
+    <div ref="aboutSectionRef" class="relative min-h-dvh lg:h-screen overflow-hidden">
+      <div
+        class="h-full flex flex-col lg:flex-row items-stretch lg:items-center justify-center lg:justify-between gap-8 lg:gap-0 py-10 lg:py-0 px-4 sm:px-8 lg:px-0"
+      >
         <div
-          class="bg-(--black) text-(--cream) max-w-prose p-16 rounded-lg text-xl items-center flex flex-col gap-4 w-1/2 will-change-transform"
+          class="bg-(--black) text-(--cream) max-w-prose w-full lg:w-1/2 p-6 sm:p-10 lg:p-16 rounded-lg text-base sm:text-lg lg:text-xl items-center flex flex-col gap-4 will-change-transform mx-auto lg:mx-0"
           :style="{ transform: `translateY(${textTranslateY}px)` }"
         >
           <p>
@@ -83,11 +85,11 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <div class="w-1/2">
+        <div class="w-full lg:w-1/2 min-h-[40vh] lg:min-h-0 shrink-0">
           <img
             :src="fullBodyImage"
             alt="Pura Coco"
-            class="w-full h-full object-contain object-top"
+            class="w-full h-full max-h-[55vh] lg:max-h-none object-contain object-top"
           />
         </div>
       </div>

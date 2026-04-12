@@ -21,8 +21,10 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
 </script>
 
 <template>
-  <main class="flex text-(--cream) flex-col w-2xl mx-auto gap-8 my-auto h-dvh justify-center">
-    <h1 class="text-3xl">Tour</h1>
+  <main
+    class="flex text-(--cream) flex-col w-full max-w-2xl mx-auto px-4 sm:px-6 gap-6 sm:gap-8 py-8 pb-16 min-h-[calc(100dvh-4rem)]"
+  >
+    <h1 class="text-2xl sm:text-3xl shrink-0">Tour</h1>
 
     <div v-if="error" class="text-base max-w-prose">
       There was an error fetching the events. Please refresh the page or try again later.
@@ -30,7 +32,7 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
 
     <div v-else-if="status === 'pending'" class="text-base max-w-prose">Loading ...</div>
 
-    <div v-else-if="status === 'success'" class="flex flex-col gap-4">
+    <div v-else-if="status === 'success'" class="flex flex-col gap-4 pb-8">
       <div class="flex gap-4 border-b border-(--cream) pb-2">
         <button
           @click="filter = 'upcoming'"
@@ -50,10 +52,12 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
       </div>
 
       <div v-for="event in data" :key="event.id">
-        <div class="flex gap-2 items-center justify-between border-b border-(--cream) pb-4">
+        <div
+          class="flex flex-col sm:flex-row gap-4 sm:gap-2 sm:items-center sm:justify-between border-b border-(--cream) pb-4"
+        >
           <NuxtLink
             :to="`/tour/${event.id}`"
-            class="flex flex-col text-lg hover:text-(--red) transition-colors"
+            class="flex flex-col text-base sm:text-lg hover:text-(--red) transition-colors min-w-0"
           >
             <div class="font-bold">
               {{ new Date(event.datetime).toLocaleDateString('en-US', { month: 'short' }) }}
@@ -72,12 +76,12 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
             </div>
             <div>{{ event.venue.city }}, {{ event.venue.country }}</div>
           </NuxtLink>
-          <div class="flex gap-2">
+          <div class="flex gap-2 shrink-0">
             <a
               :href="event.offers?.find((offer) => offer.type === 'ticket')?.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex w-max items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
+              class="inline-flex w-full sm:w-max justify-center items-center gap-2 bg-(--green) px-4 sm:px-6 py-2.5 sm:py-3 rounded-md hover:bg-(--red) transition-colors text-sm sm:text-base"
               v-if="event.offers?.find((offer) => offer.type === 'ticket')?.url"
             >
               <span>Buy Tickets</span>

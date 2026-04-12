@@ -57,7 +57,7 @@ useHead({
 </script>
 
 <template>
-  <main class="bg-(--black) text-(--cream) p-16">
+  <main class="bg-(--black) text-(--cream) px-4 py-8 sm:px-8 sm:py-12 md:p-16">
     <div class="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-16">
       <!-- Back Button -->
       <NuxtLink
@@ -129,8 +129,8 @@ useHead({
         </div>
 
         <!-- Lineup -->
-        <div v-if="event.lineup && event.lineup.length > 0" class="flex gap-4">
-          <h2 class="text-2xl font-bold">Lineup</h2>
+        <div v-if="event.lineup && event.lineup.length > 0" class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+          <h2 class="text-2xl font-bold shrink-0">Lineup</h2>
           <div class="flex gap-2 flex-col flex-wrap">
             <div v-for="(artist, index) in event.lineup" :key="index" class="text-lg flex gap-2">
               {{ artist }}
@@ -150,12 +150,12 @@ useHead({
           ></p>
         </div>
 
-        <div class="flex gap-4">
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a
             :href="ticketUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-max items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
+            class="inline-flex w-full sm:w-max justify-center items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
             v-if="ticketUrl"
           >
             <span>Buy Tickets</span>
@@ -165,7 +165,7 @@ useHead({
             :href="rsvpUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-max items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
+            class="inline-flex w-full sm:w-max justify-center items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
             v-if="rsvpUrl"
           >
             <span>Sign up for updates</span>

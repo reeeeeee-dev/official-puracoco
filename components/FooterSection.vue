@@ -6,7 +6,7 @@ import NewsletterForm from '~/components/NewsletterForm.vue'
 </script>
 
 <template>
-  <div class="flex flex-col items-end bg-(--black)">
+  <div class="flex flex-col items-stretch md:items-end bg-(--black)">
     <WavePattern wrapper-class="bg-(--black)" />
     <footer class="bg-(--black) text-(--cream) border-t border-(--cream)/20">
       <div class="mx-auto px-4 md:px-16 py-12 md:py-16">

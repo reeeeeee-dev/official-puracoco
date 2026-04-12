@@ -26,7 +26,7 @@ const scrollY = ref(0)
 const parallaxFactor = 0.35
 
 const heroImageStyle = computed(() => ({
-  transform: `translateY(${-scrollY.value * parallaxFactor}px)`,
+  transform: `translateY(${scrollY.value * parallaxFactor}px)`,
 }))
 
 const aboutParallaxFactor = 0.25
@@ -75,54 +75,64 @@ onUnmounted(() => {
     class="transition-opacity duration-300"
     :class="[revealContent ? 'opacity-100' : 'opacity-0 pointer-events-none']"
   >
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden min-h-dvh">
       <img
         src="~/assets/hero.jpg"
         alt="Pura Coco"
-        class="w-screen object-contain absolute will-change-transform"
+        class="absolute left-0 right-0 top-0 w-full max-w-[100vw] min-h-dvh object-cover will-change-transform"
         :style="heroImageStyle"
       />
-      <div class="flex items-start justify-center bg-[#e8ecd7] w-screen h-screen">
-        <h1 class="text-[15vw] text-(--red) font-bold font-[Gwendolyn] z-10">Pura Coco</h1>
+      <div
+        class="flex items-start justify-center bg-[#e8ecd7] w-full min-h-dvh h-dvh box-border pt-[max(0.75rem,env(safe-area-inset-top))]"
+      >
+        <h1
+          class="text-[clamp(2.5rem,14vw,9rem)] leading-none text-center px-2 text-(--red) font-bold font-[Gwendolyn] z-10"
+        >
+          Pura Coco
+        </h1>
       </div>
       <ScrollIndicator color="var(--red)" />
     </div>
 
     <!-- About section -->
-    <div ref="aboutSectionRef" class="h-screen bg-(--black) flex overflow-hidden">
+    <div
+      ref="aboutSectionRef"
+      class="min-h-dvh lg:h-screen bg-(--black) flex flex-col lg:flex-row overflow-hidden"
+    >
       <div
-        class="w-1/2 h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
+        class="order-2 lg:order-1 w-full lg:w-1/2 h-[38vh] sm:h-[42vh] lg:h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
         :class="aboutInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'"
       >
         <img
           :src="screamImage"
           alt="About Me Image"
-          class="size-full object-contain z-10 will-change-transform"
+          class="size-full object-contain object-bottom lg:object-center z-10 will-change-transform"
           :style="aboutImageStyle"
         />
       </div>
       <div
-        class="flex flex-col items-center justify-center h-screen w-screen z-20 bg-(--black) overflow-hidden gap-16 text-(--cream)"
+        class="order-1 lg:order-2 flex flex-col items-center justify-center flex-1 w-full lg:w-1/2 min-h-[62vh] lg:min-h-0 lg:h-screen z-20 bg-(--black) overflow-hidden gap-8 lg:gap-16 text-(--cream) px-4 py-10 lg:py-0"
       >
         <video
           autoplay
           loop
           muted
+          playsinline
           src="https://website-host.reetikpatel.me/intro.mp4"
           alt="Intro"
-          class="object-contain transition-all duration-700 ease-out"
+          class="w-full max-w-lg max-h-[32vh] lg:max-h-none object-contain transition-all duration-700 ease-out"
           :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
         />
-        <div class="flex flex-col gap-4 text-center">
+        <div class="flex flex-col gap-3 sm:gap-4 text-center max-w-prose">
           <div
-            class="text-4xl font-bold transition-all duration-700 ease-out"
+            class="text-2xl sm:text-3xl lg:text-4xl font-bold transition-all duration-700 ease-out"
             :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
             :style="{ transitionDelay: aboutInView ? '200ms' : '0ms' }"
           >
             Hi! I'm Pura Coco
           </div>
           <div
-            class="text-lg max-w-prose transition-all duration-700 ease-out"
+            class="text-base sm:text-lg max-w-prose transition-all duration-700 ease-out"
             :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
             :style="{ transitionDelay: aboutInView ? '450ms' : '0ms' }"
           >
@@ -131,11 +141,11 @@ onUnmounted(() => {
         </div>
         <NuxtLink
           to="/about"
-          class="text-(--cream) text-2xl p-4 rounded-md bg-(--red) hover:bg-(--green) transition-all duration-700 ease-out flex items-center gap-2"
+          class="text-(--cream) text-lg sm:text-2xl px-4 py-3 sm:p-4 rounded-md bg-(--red) hover:bg-(--green) transition-all duration-700 ease-out flex items-center justify-center gap-2 text-center max-w-full"
           :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
           :style="{ transitionDelay: aboutInView ? '700ms' : '0ms' }"
         >
-          Learn more about me <ArrowRightIcon />
+          Learn more about me <ArrowRightIcon class="shrink-0" />
         </NuxtLink>
       </div>
     </div>

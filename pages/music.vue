@@ -66,7 +66,7 @@ const updateGradient = (color: string) => {
 
 <template>
   <main
-    class="h-screen p-4 md:p-8 text-(--cream) relative overflow-x-hidden overflow-y-hidden flex flex-col items-center justify-center"
+    class="min-h-dvh md:h-screen py-8 px-4 md:p-8 text-(--cream) relative overflow-x-hidden overflow-y-auto md:overflow-y-hidden flex flex-col items-center justify-center"
     :style="{ '--gradient-color': 'transparent' }"
   >
     <div
