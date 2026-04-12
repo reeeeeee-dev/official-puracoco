@@ -78,9 +78,9 @@ import NewsletterForm from '~/components/NewsletterForm.vue'
               href="https://reetikpatel.me"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-(--red) transition-colors duration-200 flex items-center gap-2"
+              class="hover:text-(--red) transition-colors duration-200"
             >
-              Reetik Patel <ExternalLinkIcon :size="16" />
+              Reetik Patel&nbsp;<ExternalLinkIcon :size="16" />
             </a>
           </div>
         </div>
