@@ -97,8 +97,13 @@ onUnmounted(() => {
     <!-- About section -->
     <div
       ref="aboutSectionRef"
-      class="min-h-dvh lg:h-screen bg-(--black) flex flex-col lg:flex-row overflow-hidden"
+      class="relative min-h-dvh lg:h-screen bg-(--black) flex flex-col lg:flex-row overflow-hidden"
     >
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 z-21 h-[min(58vh,520px)] bg-[linear-gradient(to_top,color-mix(in_srgb,var(--cream)_26%,transparent)_0%,color-mix(in_srgb,var(--cream)_10%,transparent)_32%,color-mix(in_srgb,var(--cream)_4%,transparent)_58%,transparent_100%)]"
+        aria-hidden="true"
+      />
+      <AboutEmanatingParticles :active="aboutInView" />
       <div
         class="order-2 lg:order-1 w-full lg:w-1/2 h-[38vh] sm:h-[42vh] lg:h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
         :class="aboutInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'"
