@@ -54,12 +54,19 @@ onUnmounted(() => {
     </div>
 
     <!-- About section (text + image) -->
-    <div ref="aboutSectionRef" class="relative min-h-dvh lg:h-screen overflow-hidden">
+    <div ref="aboutSectionRef" class="relative lg:h-screen overflow-hidden">
+      <!-- Mobile: full-body image as background -->
+      <img
+        :src="fullBodyImage"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 w-full h-full object-cover object-top lg:hidden"
+      />
       <div
-        class="h-full flex flex-col lg:flex-row items-stretch lg:items-center justify-center lg:justify-between gap-8 lg:gap-0 py-10 lg:py-0 px-4 sm:px-8 lg:px-0"
+        class="relative h-full flex flex-col lg:flex-row items-stretch lg:items-center justify-center lg:justify-between gap-8 lg:gap-0 py-10 lg:py-0 px-4 sm:px-8 lg:px-0"
       >
         <div
-          class="bg-(--black) text-(--cream) max-w-prose w-full lg:w-1/2 p-6 sm:p-10 lg:p-16 rounded-lg text-base sm:text-lg lg:text-xl items-center flex flex-col gap-4 will-change-transform mx-auto lg:mx-0"
+          class="bg-(--black)/90 lg:bg-(--black) text-(--cream) max-w-prose w-full lg:w-1/2 p-6 sm:p-10 lg:p-16 rounded-lg text-base sm:text-lg lg:text-xl items-center flex flex-col gap-4 will-change-transform mx-auto lg:mx-0"
           :style="{ transform: `translateY(${textTranslateY}px)` }"
         >
           <p>
@@ -85,11 +92,11 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <div class="w-full lg:w-1/2 min-h-[40vh] lg:min-h-0 shrink-0">
+        <div class="hidden lg:block w-full lg:w-1/2 shrink-0">
           <img
             :src="fullBodyImage"
             alt="Pura Coco"
-            class="w-full h-full max-h-[55vh] lg:max-h-none object-contain object-top"
+            class="w-full h-full object-contain object-top"
           />
         </div>
       </div>

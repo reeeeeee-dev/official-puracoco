@@ -10,9 +10,9 @@ const { data, error, status } = await useFetch<BandsInTownEvent[]>('/api/events'
 })
 </script>
 <template>
-  <div class="relative min-h-dvh bg-(--black) text-(--cream) z-0 py-20 lg:py-0">
+  <div class="relative bg-(--black) text-(--cream) z-0 py-12 lg:py-16">
     <div
-      class="w-full min-h-[calc(100dvh-5rem)] lg:h-[calc(100dvh-4rem)] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 xl:gap-24 2xl:gap-48 px-4 sm:px-6"
+      class="w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 xl:gap-24 2xl:gap-48 px-4 sm:px-6"
     >
       <div class="max-w-prose text-2xl sm:text-3xl text-center lg:text-left shrink-0">
         <p>Upcoming Shows</p>

@@ -30,8 +30,9 @@ const heroImageStyle = computed(() => ({
 }))
 
 const aboutParallaxFactor = 0.25
+const windowHeight = ref(0)
 const aboutImageStyle = computed(() => ({
-  transform: `translateY(${scrollY.value * aboutParallaxFactor - window.innerHeight / 4}px)`,
+  transform: `translateY(${scrollY.value * aboutParallaxFactor - windowHeight.value / 4}px)`,
 }))
 
 const aboutSectionRef = ref<HTMLElement | null>(null)
@@ -60,13 +61,20 @@ function updateScroll() {
   scrollY.value = window.scrollY
 }
 
+function updateWindowHeight() {
+  windowHeight.value = window.innerHeight
+}
+
 onMounted(() => {
   window.addEventListener('scroll', updateScroll, { passive: true })
+  window.addEventListener('resize', updateWindowHeight, { passive: true })
   updateScroll()
+  updateWindowHeight()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', updateScroll)
+  window.removeEventListener('resize', updateWindowHeight)
 })
 </script>
 
@@ -105,7 +113,7 @@ onUnmounted(() => {
       />
       <AboutEmanatingParticles :active="aboutInView" />
       <div
-        class="order-2 lg:order-1 w-full lg:w-1/2 h-[38vh] sm:h-[42vh] lg:h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
+        class="order-2 lg:order-1 hidden lg:block w-full lg:w-1/2 lg:h-full overflow-hidden shrink-0 transition-all duration-700 ease-out"
         :class="aboutInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'"
       >
         <img
@@ -116,7 +124,7 @@ onUnmounted(() => {
         />
       </div>
       <div
-        class="order-1 lg:order-2 flex flex-col items-center justify-center flex-1 w-full lg:w-1/2 min-h-[62vh] lg:min-h-0 lg:h-screen z-20 bg-(--black) overflow-hidden gap-8 lg:gap-16 text-(--cream) px-4 py-10 lg:py-0"
+        class="order-1 lg:order-2 flex flex-col items-center justify-center flex-1 w-full lg:w-1/2 min-h-dvh lg:min-h-0 lg:h-screen z-20 bg-(--black) overflow-hidden gap-8 lg:gap-16 text-(--cream) px-4 py-10 lg:py-0"
       >
         <video
           autoplay
@@ -137,11 +145,14 @@ onUnmounted(() => {
             Hi! I'm Pura Coco
           </div>
           <div
-            class="text-base sm:text-lg max-w-prose transition-all duration-700 ease-out"
+            class="text-base sm:text-lg max-w-prose text-balance transition-all duration-700 ease-out"
             :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
             :style="{ transitionDelay: aboutInView ? '450ms' : '0ms' }"
           >
-            <p>I'm a singer-songwriter making music that’s honest and full of soul.</p>
+            <p>
+              Alternative R&amp;B singer/songwriter from Northwest Arkansas. Infusing music with
+              Latin roots and southern influences.
+            </p>
           </div>
         </div>
         <NuxtLink

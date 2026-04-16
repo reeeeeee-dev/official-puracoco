@@ -82,9 +82,9 @@ onUnmounted(() => {
       </button>
     </div>
     <div
-      class="flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full md:w-auto overflow-hidden transition-all duration-300"
+      class="flex flex-col md:flex-row items-center gap-1 md:gap-8 w-full md:w-auto overflow-hidden transition-all duration-300"
       :class="{
-        'max-h-96 opacity-100 pb-4': isMobileMenuOpen,
+        'max-h-96 opacity-100 pb-2': isMobileMenuOpen,
         'max-h-0 opacity-0 md:max-h-none md:opacity-100 pb-0 md:pb-0': !isMobileMenuOpen,
       }"
     >
@@ -94,7 +94,7 @@ onUnmounted(() => {
         :to="link.to"
         :exact-active-class="link.to === '/' ? 'active' : undefined"
         :active-class="link.to !== '/' ? 'active' : undefined"
-        class="nav-link relative inline-block cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-2 md:py-0"
+        class="nav-link relative inline-block cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-1 md:py-0"
         :class="linkClasses"
         @click="closeMobileMenu"
       >
@@ -102,7 +102,7 @@ onUnmounted(() => {
       </NuxtLink>
       <NuxtLink
         href="https://www.instagram.com/puracocoo/"
-        class="nav-link relative inline-flex items-center justify-center md:justify-start gap-2 cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-2 md:py-0"
+        class="nav-link relative inline-flex items-center justify-center md:justify-start gap-2 cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-1 md:py-0"
         :class="linkClasses"
         @click="closeMobileMenu"
       >

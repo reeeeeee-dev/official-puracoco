@@ -4,6 +4,7 @@
     width="100%"
     height="100%"
     title="newsletter-widget"
-    class="min-h-72 sm:min-h-80 w-full max-w-md min-w-0 outline-0 mx-auto block"
+    scrolling="no"
+    class="min-h-64 sm:min-h-72 w-full min-w-0 outline-0 mx-auto block overflow-visible [&]:overflow-hidden"
   />
 </template>
