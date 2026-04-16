@@ -9,14 +9,12 @@ import NewsletterForm from '~/components/NewsletterForm.vue'
     <footer class="bg-(--black) text-(--cream) border-t border-(--cream)/20">
       <div class="mx-auto px-4 md:px-16 py-12 md:py-16">
         <!-- Main Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-4 justify-items-center text-center md:text-left md:justify-items-start">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-4 justify-items-center text-center md:text-left md:justify-items-start"
+        >
           <!-- Brand Section -->
           <div class="flex flex-col gap-4 text-left justify-self-start self-center">
             <h2 class="text-2xl md:text-3xl font-bold text-(--red)">Pura Coco</h2>
-            <p class="text-sm md:text-base opacity-80 leading-relaxed max-w-prose">
-              Alternative R&B singer/songwriter from Northwest Arkansas. Infusing music with Latin
-              roots and southern influences.
-            </p>
             <div class="flex gap-4">
               <a
                 href="https://www.instagram.com/puracocoo/"
