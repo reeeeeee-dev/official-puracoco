@@ -93,4 +93,11 @@ const spanCount = 8 // Number of spans for seamless looping
     transform: translateX(0);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left,
+  .marquee-right {
+    animation: none;
+  }
+}
 </style>

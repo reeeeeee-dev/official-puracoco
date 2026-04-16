@@ -71,4 +71,11 @@ onUnmounted(() => {
 .fade-out-leave-to {
   opacity: 0;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-out-enter-active,
+  .fade-out-leave-active {
+    transition: none;
+  }
+}
 </style>

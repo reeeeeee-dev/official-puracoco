@@ -7,7 +7,15 @@ const route = useRoute()
 </script>
 
 <template>
-  <main>
+  <div>
+    <!-- Skip to main content for keyboard / screen-reader users -->
+    <a
+      href="#main-content"
+      class="skip-link sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-md focus:bg-(--red) focus:px-4 focus:py-2 focus:text-(--cream) focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
+
     <LoadingScreen />
     <NavbarHeader />
 
@@ -21,11 +29,14 @@ const route = useRoute()
       />
     </ClientOnly>
 
-    <div :class="route.path !== '/' && route.path !== '/about' ? 'flex flex-col min-h-screen' : ''">
+    <div
+      id="main-content"
+      :class="route.path !== '/' && route.path !== '/about' ? 'flex flex-col min-h-screen' : ''"
+    >
       <NuxtPage :class="route.path !== '/' && route.path !== '/about' ? 'mt-16 grow' : ''" />
       <FooterSection v-if="route.path !== '/' && route.path !== '/about'" />
     </div>
-  </main>
+  </div>
 </template>
 
 <style>
@@ -36,5 +47,12 @@ const route = useRoute()
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
 }
 </style>

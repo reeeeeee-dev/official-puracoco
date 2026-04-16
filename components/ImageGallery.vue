@@ -5,85 +5,85 @@ defineOptions({
 
 const images = [
   {
-    src: '/gallery/01.png',
+    src: '/gallery/01.webp',
     alt: 'Singer performing on stage under green and pink stage lights.',
     width: 1024,
     height: 682,
   },
   {
-    src: '/gallery/02.png',
+    src: '/gallery/02.webp',
     alt: 'Studio portrait seated on a vintage chair in a patchwork vest and dress.',
     width: 682,
     height: 1024,
   },
   {
-    src: '/gallery/03.png',
+    src: '/gallery/03.webp',
     alt: 'Outdoor portrait leaning on a curved orange structure against a clear blue sky.',
     width: 684,
     height: 1024,
   },
   {
-    src: '/gallery/04.png',
+    src: '/gallery/04.webp',
     alt: 'Live performance singing into a microphone under purple stage lighting.',
     width: 1024,
     height: 682,
   },
   {
-    src: '/gallery/05.png',
+    src: '/gallery/05.webp',
     alt: 'Full-length live performance on stage with drums and spotlights.',
     width: 682,
     height: 1024,
   },
   {
-    src: '/gallery/06.png',
+    src: '/gallery/06.webp',
     alt: 'Collaborative meeting at a glass whiteboard in a bright modern office.',
     width: 1024,
     height: 682,
   },
   {
-    src: '/gallery/07.png',
+    src: '/gallery/07.webp',
     alt: 'Atmospheric live performance on a dark stage with warm amber lighting.',
     width: 682,
     height: 1024,
   },
   {
-    src: '/gallery/08.png',
+    src: '/gallery/08.webp',
     alt: 'Portrait on a red couch in an industrial-style room with exposed brick. Photo: Audrey Smith.',
     width: 1024,
     height: 588,
   },
   {
-    src: '/gallery/09.png',
+    src: '/gallery/09.webp',
     alt: 'Artistic portrait with curly hair and bold red lipstick against a teal background.',
     width: 683,
     height: 1024,
   },
   {
-    src: '/gallery/10.png',
+    src: '/gallery/10.webp',
     alt: 'Group of performers on an outdoor stage under purple concert lighting.',
     width: 819,
     height: 1024,
   },
   {
-    src: '/gallery/11.png',
+    src: '/gallery/11.webp',
     alt: 'Moody portrait in a denim jacket with dramatic blue and orange lighting.',
     width: 819,
     height: 1024,
   },
   {
-    src: '/gallery/12.png',
+    src: '/gallery/12.webp',
     alt: 'Stylized overhead portrait in a school-inspired outfit on a light background.',
     width: 1024,
     height: 1024,
   },
   {
-    src: '/gallery/13.png',
+    src: '/gallery/13.webp',
     alt: 'Crouched portrait in a star-patterned sweater with a hand extended toward the camera.',
     width: 682,
     height: 1024,
   },
   {
-    src: '/gallery/14.png',
+    src: '/gallery/14.webp',
     alt: 'Close-up portrait in a pink jacket and yellow sunglasses against a bright yellow backdrop.',
     width: 682,
     height: 1024,
@@ -195,6 +195,13 @@ const row2 = images.slice(mid)
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-scroll-left,
+  .gallery-scroll-right {
+    animation: none;
   }
 }
 </style>

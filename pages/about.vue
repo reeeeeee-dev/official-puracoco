@@ -6,8 +6,8 @@ defineOptions({
 import MarqueeFill from '~/components/MarqueeFill.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import ImageGallery from '~/components/ImageGallery.vue'
-import portraitImage from '~/assets/portrait1.png'
-import fullBodyImage from '~/assets/full_body.jpg'
+import portraitImage from '~/assets/portrait1.webp'
+import fullBodyImage from '~/assets/full_body.webp'
 
 const aboutSectionRef = ref<HTMLElement | null>(null)
 const textTranslateY = ref(0)
@@ -38,7 +38,9 @@ onUnmounted(() => {
   <main>
     <div class="relative min-h-dvh bg-(--cream) z-0">
       <!-- Sticky background across both sections -->
-      <div class="sticky top-16 w-full min-h-[calc(100dvh-4rem)] h-[calc(100dvh-4rem)] overflow-hidden">
+      <div
+        class="sticky top-16 w-full min-h-[calc(100dvh-4rem)] h-[calc(100dvh-4rem)] overflow-hidden"
+      >
         <MarqueeFill
           text="Pura Coco"
           class="absolute inset-0 top-12 w-full h-full font-[Poppins] font-extrabold"
@@ -47,6 +49,9 @@ onUnmounted(() => {
         <img
           :src="portraitImage"
           alt="Pura Coco"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
           class="absolute w-full top-12 h-full object-cover object-top"
         />
       </div>
@@ -96,6 +101,9 @@ onUnmounted(() => {
           <img
             :src="fullBodyImage"
             alt="Pura Coco"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
             class="w-full h-full object-contain object-top"
           />
         </div>

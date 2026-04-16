@@ -69,14 +69,19 @@ useHead({
       </NuxtLink>
 
       <!-- Error State -->
-      <div v-if="error" class="text-center py-16">
+      <div v-if="error" role="alert" class="text-center py-16">
         <p class="text-xl mb-4">
           There was an error loading the event. Try refreshing the page or check again later.
         </p>
       </div>
 
       <!-- Loading State -->
-      <div v-else-if="status === 'pending'" class="text-center py-16">
+      <div
+        v-else-if="status === 'pending'"
+        role="status"
+        aria-live="polite"
+        class="text-center py-16"
+      >
         <p class="text-xl">Loading event...</p>
       </div>
 
@@ -129,7 +134,10 @@ useHead({
         </div>
 
         <!-- Lineup -->
-        <div v-if="event.lineup && event.lineup.length > 0" class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+        <div
+          v-if="event.lineup && event.lineup.length > 0"
+          class="flex flex-col sm:flex-row gap-2 sm:gap-4"
+        >
           <h2 class="text-2xl font-bold shrink-0">Lineup</h2>
           <div class="flex gap-2 flex-col flex-wrap">
             <div v-for="(artist, index) in event.lineup" :key="index" class="text-lg flex gap-2">
@@ -155,21 +163,23 @@ useHead({
             :href="ticketUrl"
             target="_blank"
             rel="noopener noreferrer"
+            :aria-label="`Buy tickets for ${event.venue.name} on ${formattedDate} (opens in new tab)`"
             class="inline-flex w-full sm:w-max justify-center items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
             v-if="ticketUrl"
           >
             <span>Buy Tickets</span>
-            <ExternalLinkIcon class="size-4" />
+            <ExternalLinkIcon class="size-4" aria-hidden="true" />
           </a>
           <a
             :href="rsvpUrl"
             target="_blank"
             rel="noopener noreferrer"
+            :aria-label="`Sign up for updates about ${event.venue.name} on ${formattedDate} (opens in new tab)`"
             class="inline-flex w-full sm:w-max justify-center items-center gap-2 bg-(--green) px-6 py-3 rounded-md hover:bg-(--red) transition-colors"
             v-if="rsvpUrl"
           >
             <span>Sign up for updates</span>
-            <ExternalLinkIcon class="size-4" />
+            <ExternalLinkIcon class="size-4" aria-hidden="true" />
           </a>
         </div>
       </div>

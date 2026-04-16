@@ -88,7 +88,8 @@ const updateGradient = (color: string) => {
             :href="service.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="music-card relative bg-(--black) overflow-hidden transition-all duration-300 cursor-pointer flex items-center justify-center no-underline text-(--cream) w-full h-full"
+            :aria-label="`Listen to Pura Coco on ${service.name} (opens in new tab)`"
+            class="music-card relative bg-(--black) overflow-hidden transition-all duration-300 cursor-pointer flex items-center justify-center no-underline text-(--cream) w-full h-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-(--cream)"
           >
             <div
               class="relative z-10 text-center p-3 md:p-4 w-full h-full flex flex-col items-center justify-center gap-2 md:gap-3"
@@ -101,12 +102,14 @@ const updateGradient = (color: string) => {
               </h2>
               <div
                 class="opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
+                aria-hidden="true"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   class="w-5 h-5 md:w-6 md:h-6"
+                  focusable="false"
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"

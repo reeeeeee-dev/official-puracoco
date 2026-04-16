@@ -53,4 +53,17 @@ const props = withDefaults(
     opacity: 0.3;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+    opacity: 1;
+  }
+
+  .bounce-oval {
+    animation: none;
+    top: 18px;
+    opacity: 1;
+  }
+}
 </style>

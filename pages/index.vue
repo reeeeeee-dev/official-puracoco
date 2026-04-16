@@ -7,7 +7,7 @@ import ScrollIndicator from '~/components/ScrollIndicator.vue'
 import TourSection from '~/components/TourSection.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import { ArrowRightIcon } from 'lucide-vue-next'
-import screamImage from '~/assets/scream.jpg'
+import screamImage from '~/assets/scream.webp'
 
 // When navigating from another page, keep content hidden until we've scrolled to top to avoid flash to tour section
 const navigatedToIndex = useState<boolean>('navigatedToIndex', () => false)
@@ -85,8 +85,11 @@ onUnmounted(() => {
   >
     <div class="relative overflow-hidden min-h-dvh">
       <img
-        src="~/assets/hero.jpg"
+        src="~/assets/hero.webp"
         alt="Pura Coco"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
         class="absolute left-0 right-0 top-0 w-full max-w-[100vw] min-h-dvh object-cover will-change-transform"
         :style="heroImageStyle"
       />
@@ -132,7 +135,7 @@ onUnmounted(() => {
           muted
           playsinline
           src="https://website-host.reetikpatel.me/intro.mp4"
-          alt="Intro"
+          aria-label="Pura Coco intro video"
           class="w-full max-w-lg max-h-[32vh] lg:max-h-none object-contain transition-all duration-700 ease-out"
           :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
         />

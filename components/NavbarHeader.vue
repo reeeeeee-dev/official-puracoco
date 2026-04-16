@@ -52,11 +52,13 @@ onUnmounted(() => {
     <div class="flex justify-between items-center w-full md:w-auto h-16">
       <NuxtLink
         to="/"
+        aria-label="Pura Coco — home"
         class="inline-flex items-center transition-colors"
         :class="linkClasses"
         @click="closeMobileMenu"
       >
         <span
+          aria-hidden="true"
           class="inline-block size-16 [&_svg]:w-full [&_svg]:h-full [&_svg]:block"
           v-html="logoSvg"
         />
@@ -65,7 +67,9 @@ onUnmounted(() => {
         @click="toggleMobileMenu"
         class="md:hidden flex flex-col justify-center items-center size-8 gap-1.5 transition-colors"
         :class="linkClasses"
-        aria-label="Toggle menu"
+        :aria-expanded="isMobileMenuOpen"
+        aria-controls="mobile-nav"
+        :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
       >
         <span
           class="block w-6 h-0.5 bg-current transition-all duration-300"
@@ -82,6 +86,7 @@ onUnmounted(() => {
       </button>
     </div>
     <div
+      id="mobile-nav"
       class="flex flex-col md:flex-row items-center gap-1 md:gap-8 w-full md:w-auto overflow-hidden transition-all duration-300"
       :class="{
         'max-h-96 opacity-100 pb-2': isMobileMenuOpen,
@@ -102,11 +107,14 @@ onUnmounted(() => {
       </NuxtLink>
       <NuxtLink
         href="https://www.instagram.com/puracocoo/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Merch (opens on Instagram, new tab)"
         class="nav-link relative inline-flex items-center justify-center md:justify-start gap-2 cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-1 md:py-0"
         :class="linkClasses"
         @click="closeMobileMenu"
       >
-        Merch <ExternalLinkIcon :size="16" />
+        Merch <ExternalLinkIcon :size="16" aria-hidden="true" />
       </NuxtLink>
     </div>
   </nav>
