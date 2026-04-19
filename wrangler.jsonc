@@ -5,7 +5,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "official-puracoco",
-  "account_id": "f3c2268b20bd6d2acaf1f6ccbf3ae6ee",
   "compatibility_date": "2026-04-07",
   "main": ".output/server/index.mjs",
   "assets": {
@@ -15,7 +14,7 @@
   "observability": {
     "enabled": true,
   },
-  "routes": [{ "pattern": "officialpuracoco.com", "custom_domain": true }],
+  "routes": [{ "pattern": "puracoco.reetikpatel.me", "custom_domain": true }],
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
