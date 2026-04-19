@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { ExternalLinkIcon } from 'lucide-vue-next'
 import logoSvg from '~/assets/star_logo.svg?raw'
 import { navLinks } from '~/constants/navLinks'
 
