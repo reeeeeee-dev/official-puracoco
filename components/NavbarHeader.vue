@@ -104,17 +104,6 @@ onUnmounted(() => {
       >
         {{ link.name }}
       </NuxtLink>
-      <!-- <NuxtLink
-        href="https://www.instagram.com/puracocoo/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Merch (opens on Instagram, new tab)"
-        class="nav-link relative inline-flex items-center justify-center md:justify-start gap-2 cursor-pointer transition-colors w-full md:w-auto text-center md:text-left py-1 md:py-0"
-        :class="linkClasses"
-        @click="closeMobileMenu"
-      >
-        Merch <ExternalLinkIcon :size="16" aria-hidden="true" />
-      </NuxtLink> -->
     </div>
   </nav>
 </template>
