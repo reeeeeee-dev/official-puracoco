@@ -122,6 +122,8 @@ onUnmounted(() => {
         <img
           :src="screamImage"
           alt="About Me Image"
+          loading="lazy"
+          decoding="async"
           class="size-full object-contain object-bottom lg:object-center z-10 will-change-transform"
           :style="aboutImageStyle"
         />
@@ -134,7 +136,7 @@ onUnmounted(() => {
           loop
           muted
           playsinline
-          src="https://website-host.reetikpatel.me/intro.mp4"
+          :src="aboutInView ? 'https://website-host.reetikpatel.me/intro.mp4' : undefined"
           aria-label="Pura Coco intro video"
           class="w-full max-w-lg max-h-[32vh] lg:max-h-none object-contain transition-all duration-700 ease-out"
           :class="aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"

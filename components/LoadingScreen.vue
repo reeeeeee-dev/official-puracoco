@@ -4,6 +4,7 @@ import logoSvg from '~/assets/head_logo.svg?raw'
 import LoadingDots from './LoadingDots.vue'
 
 const isVisible = ref(true)
+let dismissTimeout: ReturnType<typeof setTimeout> | null = null
 
 // Disable scrolling when loading screen is visible
 watch(
@@ -20,26 +21,40 @@ watch(
   { immediate: true },
 )
 
+function dismiss() {
+  if (!isVisible.value) return
+  isVisible.value = false
+}
+
 onMounted(() => {
-  // Only run on client side
   if (!process.client) return
 
-  // Wait for page to fully load (including images and fonts)
-  if (document.readyState === 'complete') {
-    // If already loaded, wait a minimum time for smooth UX
-    setTimeout(() => {
-      isVisible.value = false
-    }, 500)
+  // Dismiss once the DOM is interactive — don't wait for all resources (images, video, iframes).
+  // A hard cap of 2 s ensures we never hang on slow connections.
+  dismissTimeout = setTimeout(dismiss, 2000)
+
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    if (dismissTimeout) clearTimeout(dismissTimeout)
+    dismissTimeout = null
+    dismiss()
   } else {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        isVisible.value = false
-      }, 500)
-    })
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        if (dismissTimeout) clearTimeout(dismissTimeout)
+        dismissTimeout = null
+        dismiss()
+      },
+      { once: true },
+    )
   }
 })
 
 onUnmounted(() => {
+  if (dismissTimeout) {
+    clearTimeout(dismissTimeout)
+    dismissTimeout = null
+  }
   // Ensure scrolling is re-enabled if component is unmounted
   if (process.client) {
     document.body.style.overflow = ''
